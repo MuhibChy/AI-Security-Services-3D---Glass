@@ -163,7 +163,7 @@ class DemoDataSeeder extends Seeder
             ['David Osei', 'Northgate Retail Ltd', 'Initial enquiry logged. Follow-up scheduled with client contact.', 'website', 'new', 'low', 500.00, 'USD', null],
             ['Maria Santos', 'Santos Logistics Ltd', 'Interested in managed support cover.', 'get-quote', 'contacted', 'medium', 5000.00, 'GBP', '+30 days'],
             ['Kenji Tanaka', 'Tanaka Manufacturing', 'Requested cloud migration scoping call.', 'contact', 'qualified', 'high', 15000.50, 'USD', '+7 days'],
-            ['Anna Kowalski', 'Kowalski Financial Services', 'Evaluating security review options.', 'referral', 'proposal', 'urgent', 75000.00, 'EUR', '+1 day'],
+            ['Anna Kowalski', 'Kowalski Financial Services', 'Evaluating security review options.', 'referral', 'proposal', 'urgent', 75000.00, 'GBP', '+1 day'],
             ['Sarah Mitchell', 'Northbridge Technologies Ltd', 'Converted to customer account.', 'manual', 'won', 'medium', 1200.00, 'BDT', null],
         ];
         $out = [];
@@ -303,7 +303,7 @@ class DemoDataSeeder extends Seeder
                 'is_demo' => true,
                 'customer_id' => $users['customers'][$i]->id,
                 'assigned_to' => $users['staff']['sales_agent']->id,
-                'currency' => ['USD', 'GBP', 'BDT', 'EUR', 'USD'][$i],
+                'currency' => ['USD', 'GBP', 'BDT', 'USD', 'USD'][$i],
                 'notes' => 'Prepared following discovery call '.($i + 1).'.',
                 'terms' => 'Standard terms: net 14.',
                 'valid_until' => \Carbon\Carbon::parse($valid),
@@ -357,7 +357,7 @@ class DemoDataSeeder extends Seeder
                 'tax_rate' => $taxRate,
                 'tax_amount' => $tax,
                 'total' => $subtotal + $tax,
-                'currency' => ['USD', 'GBP', 'BDT', 'EUR', 'USD'][$i],
+                'currency' => ['USD', 'GBP', 'BDT', 'USD', 'USD'][$i],
                 'valid_until' => now()->addDays(30),
             ]);
             $p->sections()->create(['heading' => 'Scope Overview', 'body' => 'Scope details as discussed.', 'sort_order' => 0]);
@@ -382,7 +382,7 @@ class DemoDataSeeder extends Seeder
                 'status' => ['draft', 'sent', 'active', 'expired', 'terminated'][$i],
                 'body' => "Agreement terms as discussed.\nSecond line.",
                 'value' => [800.00, 2500.00, 0.00, 15000.00, 99999.99][$i],
-                'currency' => ['USD', 'GBP', 'BDT', 'EUR', 'USD'][$i],
+                'currency' => ['USD', 'GBP', 'BDT', 'USD', 'USD'][$i],
                 'start_date' => now()->subDays([60, 10, 0, 400, 200][$i])->toDateString(),
                 'end_date' => now()->addDays([300, 350, 30, -30, -10][$i])->toDateString(),
             ]);
@@ -405,7 +405,7 @@ class DemoDataSeeder extends Seeder
                 'requirements' => "Service requirements as discussed.\nScope confirmed with the client.",
                 'priority' => ['low', 'medium', 'high', 'urgent', 'medium'][$i],
                 'status' => ['pending', 'confirmed', 'in_progress', 'completed', 'cancelled'][$i],
-                'currency' => ['USD', 'GBP', 'BDT', 'EUR', 'USD'][$i],
+                'currency' => ['USD', 'GBP', 'BDT', 'USD', 'USD'][$i],
                 'total' => [800.00, 2500.00, 0.00, 15000.00, 99999.99][$i],
                 'amount_paid' => [0, 2500.00, 0, 5000.00, 0][$i],
                 'amount_due' => [800.00, 0, 0, 10000.00, 99999.99][$i],
@@ -572,7 +572,7 @@ class DemoDataSeeder extends Seeder
             [[['Penetration testing — external', 2, 400.00, 0.00]], 'fixed', 0.00, 10.0, 'sent', '+14 days', 'USD'],
             [[['Consulting block (10h)', 5, 200.00, 50.00], ['Travel expenses', 1, 99.99, 0]], 'fixed', 100.00, 20.0, 'sent', '-10 days', 'GBP'],
             [[['Scoping workshop', 1, 0.00, 0.00]], 'fixed', 0.00, 0.0, 'draft', '+30 days', 'BDT'],
-            [[['Annual monitoring', 1, 100000.00, 0.00]], 'percentage', 10.00, 8.5, 'sent', '+7 days', 'EUR'],
+            [[['Annual monitoring', 1, 100000.00, 0.00]], 'percentage', 10.00, 8.5, 'sent', '+7 days', 'GBP'],
             [[['Support block (10h)', 4, 250.00, 0.00]], 'fixed', 0.00, 5.0, 'sent', '+21 days', 'USD'],
         ];
         foreach ($combos as $i => [$items, $discType, $discAmt, $taxRate, $status, $due, $currency]) {

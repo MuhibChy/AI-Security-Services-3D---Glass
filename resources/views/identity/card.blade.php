@@ -4,7 +4,7 @@
 <div class="space-y-6">
 <x-page-header title="Digital Member ID" subtitle="Your verifiable membership credential." sys="IDENTITY://ID" />
 <div class="term-panel p-6 mb-4 max-w-xl mx-auto">
-    <h2 class="text-xl font-bold text-slate-900 dark:text-white text-center tracking-widest font-mono">PERFECTITSECURITY</h2>
+    <h2 class="text-xl font-bold text-slate-900 dark:text-white text-center tracking-widest font-mono">AI SECURITY SERVICES</h2>
     <p class="term-hint text-center mb-4">DIGITAL MEMBER ID</p>
     @if(session('success'))<div class="term-alert term-alert-ok mb-3"><span class="term-alert-tag">OK</span><span>{{ session('success') }}</span></div>@endif
     @if($card)

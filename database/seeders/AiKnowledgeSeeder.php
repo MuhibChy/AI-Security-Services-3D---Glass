@@ -58,7 +58,7 @@ class AiKnowledgeSeeder extends Seeder
     private function categories(): array
     {
         return [
-            'about-company' => ['name' => 'About PerfectITSecurity', 'description' => 'Who we are and how to work with us.', 'icon' => 'building', 'sort_order' => 10],
+            'about-company' => ['name' => 'About AI Security Services', 'description' => 'Who we are and how to work with us.', 'icon' => 'building', 'sort_order' => 10],
             'it-support' => ['name' => 'IT Support', 'description' => 'Everyday IT help for businesses.', 'icon' => 'desktop', 'sort_order' => 11],
             'microsoft-365' => ['name' => 'Microsoft 365', 'description' => 'Outlook, Teams, OneDrive, accounts.', 'icon' => 'mail', 'sort_order' => 12],
             'networking' => ['name' => 'Networking', 'description' => 'Wi-Fi, Ethernet, DNS, VPN, connectivity.', 'icon' => 'wifi', 'sort_order' => 13],
@@ -90,8 +90,8 @@ class AiKnowledgeSeeder extends Seeder
         };
 
         // About
-        $add('about-company', 'what-does-perfectitsecurity-do', 'What does PerfectITSecurity do?', 'IT support, cybersecurity, and technology services for businesses.', 'company services about',
-            "PerfectITSecurity provides IT support, cybersecurity, and technology services for businesses.\n\n- **Managed IT support** — day-to-day technology help and maintenance\n- **Cybersecurity** — assessments, hardening, and awareness\n- **Websites and software** — development, maintenance, and security\n- **Cloud and servers** — hosting, monitoring, and backups\n\nUse /services to browse the catalogue or /get-quote to request a quotation.");
+        $add('about-company', 'what-does-ai-security-services-do', 'What does AI Security Services do?', 'IT support, cybersecurity, and technology services for businesses.', 'company services about',
+            "AI Security Services provides IT support, cybersecurity, and technology services for businesses.\n\n- **Managed IT support** — day-to-day technology help and maintenance\n- **Cybersecurity** — assessments, hardening, and awareness\n- **Websites and software** — development, maintenance, and security\n- **Cloud and servers** — hosting, monitoring, and backups\n\nUse /services to browse the catalogue or /get-quote to request a quotation.");
         $add('about-company', 'how-to-become-customer', 'How do I become a customer?', 'Register, verify, request a quote or service.', 'register customer account signup',
             "Becoming a customer takes three steps:\n\n1. **Register** an account and verify your email and phone.\n2. **Request a quote** at /get-quote or browse /services.\n3. **Accept the quotation** in your portal and work begins.\n\nFor help choosing, ask the AI Assistant or contact the team via /contact.");
         $add('about-company', 'do-you-provide-remote-support', 'Do you provide remote support?', 'Yes — remote-first support with on-site options by arrangement.', 'remote support onsite',

@@ -42,6 +42,7 @@ use App\Http\Controllers\Public\KnowledgeBaseController;
 use App\Http\Controllers\Public\LegalController;
 use App\Http\Controllers\Public\PricingController;
 use App\Http\Controllers\Public\ServiceController;
+use App\Http\Controllers\Public\SkillsController;
 use App\Http\Controllers\Public\UsefulLinksController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -59,6 +60,9 @@ Route::post('/contact', [ContactController::class, 'submit'])->middleware('throt
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 Route::get('/services/{slug}', [ServiceController::class, 'show'])->name('services.show');
 
+// Full skills & capabilities matrix (all 161 delivered capabilities).
+Route::get('/skills', [SkillsController::class, 'index'])->name('skills');
+
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::post('/blog/{slug}/comment', [BlogController::class, 'comment'])->middleware('throttle:10,1')->name('blog.comment');
@@ -67,10 +71,14 @@ Route::get('/knowledge-base', [KnowledgeBaseController::class, 'index'])->name('
 Route::get('/knowledge-base/{slug}', [KnowledgeBaseController::class, 'show'])->name('kb.show');
 Route::post('/knowledge-base/{slug}/vote', [KnowledgeBaseController::class, 'vote'])->middleware('throttle:20,1')->name('kb.vote');
 
+// Knowledge Hub (100+ IT & Cybersecurity Resources)
+Route::get('/knowledge-hub', [\App\Http\Controllers\Public\KnowledgeHubController::class, 'index'])->name('knowledge-hub.index');
+
 Route::get('/faq', fn () => view('public.faq'))->name('faq');
 Route::get('/get-quote', [\App\Http\Controllers\Public\QuoteController::class, 'create'])->name('get-quote');
 Route::post('/get-quote', [\App\Http\Controllers\Public\QuoteController::class, 'store'])->middleware('throttle:10,1')->name('get-quote.submit');
 Route::get('/currency/{currency}', [\App\Http\Controllers\Public\CurrencyController::class, 'switch'])->name('currency.switch');
+Route::get('/team', fn () => view('public.team'))->name('team');
 Route::get('/careers', fn () => view('public.careers'))->name('careers');
 Route::get('/industries', fn () => view('public.industries'))->name('industries');
 Route::get('/offices', fn () => view('public.offices'))->name('offices');

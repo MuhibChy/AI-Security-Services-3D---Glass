@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', $article->title . ' — Knowledge Base | PerfectITSecurity')
+@section('title', $article->title . ' — Knowledge Base | AI Security Services')
 @section('description', $article->excerpt ?? 'Technical runbook and guide for enterprise systems.')
 
 @section('content')

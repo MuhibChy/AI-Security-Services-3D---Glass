@@ -34,13 +34,13 @@ class SyntheticCustomerJourneyTest extends TestCase
             'TC01 UK → GBP+USD' => [['01', 'United Kingdom', 'UK', '+447700900201', ['GBP', 'USD']]],
             'TC02 US → USD' => [['02', 'United States', 'US', '+12025550202', ['USD']]],
             'TC03 BD → BDT+USD' => [['03', 'Bangladesh', 'BD', '+8801700000203', ['BDT', 'USD']]],
-            'TC04 DE → EUR+USD' => [['04', 'Germany', 'DE', '+491700000204', ['EUR', 'USD']]],
-            'TC05 AE → AED+USD' => [['05', 'United Arab Emirates', 'AE', '+971500000205', ['AED', 'USD']]],
-            'TC06 SA → SAR+USD' => [['06', 'Saudi Arabia', 'SA', '+966500000206', ['SAR', 'USD']]],
-            'TC07 KW → KWD+USD' => [['07', 'Kuwait', 'KW', '+96550000207', ['KWD', 'USD']]],
+            'TC04 DE → USD' => [['04', 'Germany', 'DE', '+491700000204', ['USD']]],
+            'TC05 AE → USD' => [['05', 'United Arab Emirates', 'AE', '+971500000205', ['USD']]],
+            'TC06 SA → USD' => [['06', 'Saudi Arabia', 'SA', '+966500000206', ['USD']]],
+            'TC07 KW → USD' => [['07', 'Kuwait', 'KW', '+96550000207', ['USD']]],
             'TC08 unsupported → USD' => [['08', 'Atlantis', null, '+819000002208', ['USD']]],
-            'TC09 FR → EUR+USD' => [['09', 'France', 'FR', '+33600000209', ['EUR', 'USD']]],
-            'TC10 QA → QAR+USD' => [['10', 'Qatar', 'QA', '+97450000210', ['QAR', 'USD']]],
+            'TC09 FR → USD' => [['09', 'France', 'FR', '+33600000209', ['USD']]],
+            'TC10 QA → USD' => [['10', 'Qatar', 'QA', '+97450000210', ['USD']]],
         ];
     }
 

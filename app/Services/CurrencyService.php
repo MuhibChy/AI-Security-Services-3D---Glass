@@ -80,15 +80,6 @@ class CurrencyService
         $defaults = [
             'GBP' => 0.79,
             'BDT' => 110.0,
-            'EUR' => 0.92,
-            // Gulf pegs (static; refreshed from Frankfurter when remote allowed).
-            'AED' => 3.6725,
-            'SAR' => 3.75,
-            'QAR' => 3.64,
-            'KWD' => 0.31,
-            'BHD' => 0.376,
-            'OMR' => 0.3845,
-            'JOD' => 0.71,
             'USD' => 1.0,
         ];
 

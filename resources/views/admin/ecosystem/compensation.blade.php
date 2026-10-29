@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('page-title', 'Compensation')
 @section('content')
 <div class="max-w-3xl mx-auto space-y-6">
@@ -9,15 +9,15 @@
 
         <div class="grid sm:grid-cols-3 gap-4">
             <label class="term-panel-2 p-3 flex items-center gap-2.5 text-sm cursor-pointer">
-                <input type="checkbox" name="has_salary" value="1" {{ old('has_salary', $compensation?->has_salary) ? 'checked' : '' }} class="accent-[#00E67A]">
+                <input type="checkbox" name="has_salary" value="1" {{ old('has_salary', $compensation?->has_salary) ? 'checked' : '' }} class="accent-[#36D9FF]">
                 <span class="text-slate-900 dark:text-white font-medium">Salary based</span>
             </label>
             <label class="term-panel-2 p-3 flex items-center gap-2.5 text-sm cursor-pointer">
-                <input type="checkbox" name="has_commission" value="1" {{ old('has_commission', $compensation?->has_commission) ? 'checked' : '' }} class="accent-[#00E67A]">
+                <input type="checkbox" name="has_commission" value="1" {{ old('has_commission', $compensation?->has_commission) ? 'checked' : '' }} class="accent-[#36D9FF]">
                 <span class="text-slate-900 dark:text-white font-medium">Commission based</span>
             </label>
             <label class="term-panel-2 p-3 flex items-center gap-2.5 text-sm cursor-pointer">
-                <input type="checkbox" name="has_project_pay" value="1" {{ old('has_project_pay', $compensation?->has_project_pay) ? 'checked' : '' }} class="accent-[#00E67A]">
+                <input type="checkbox" name="has_project_pay" value="1" {{ old('has_project_pay', $compensation?->has_project_pay) ? 'checked' : '' }} class="accent-[#36D9FF]">
                 <span class="text-slate-900 dark:text-white font-medium">Project based</span>
             </label>
         </div>
@@ -85,3 +85,4 @@
     </form>
 </div>
 @endsection
+

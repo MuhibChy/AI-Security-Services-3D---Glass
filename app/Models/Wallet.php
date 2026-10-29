@@ -12,6 +12,24 @@ class Wallet extends Model
 
     public const STATUSES = ['active', 'frozen', 'closed'];
 
+    protected static function booted()
+    {
+        static::creating(function ($wallet) {
+            if (empty($wallet->wallet_reference)) {
+                $wallet->wallet_reference = \App\Services\WalletService::reference('WLT');
+            }
+            if (empty($wallet->currency)) {
+                $wallet->currency = 'USD';
+            }
+            if (empty($wallet->status)) {
+                $wallet->status = 'active';
+            }
+            if (! isset($wallet->balance)) {
+                $wallet->balance = 0;
+            }
+        });
+    }
+
     public const CREDIT_TYPES = ['deposit', 'refund', 'credit_adjustment'];
 
     public const DEBIT_TYPES = ['invoice_payment', 'debit_adjustment', 'withdrawal', 'reversal'];

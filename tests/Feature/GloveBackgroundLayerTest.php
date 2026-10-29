@@ -65,12 +65,14 @@ class GloveBackgroundLayerTest extends TestCase
     public function both_glove_meshes_kept_and_animated_in_one_scene()
     {
         $js = $this->sceneJs();
-        // Both hero meshes of the shield group still built…
-        foreach (['shieldWire', 'shieldCore', 'crestMesh', 'dataRings', 'layoutShield'] as $token) {
+        // Hero meshes of the re-art-directed shield group still built…
+        // (2026-10 redesign replaced shieldWire frame with the extruded
+        // crest + core + orbit rings composition; no wireframe frame.)
+        foreach (['shieldCore', 'crestMesh', 'dataRings', 'layoutShield'] as $token) {
             $this->assertStringContainsString($token, $js);
         }
         // …and still driven by the single animation loop (no frozen scene)…
-        foreach (['shieldWire.rotation', 'shieldCore.rotation', 'crestMesh.position'] as $token) {
+        foreach (['shieldCore.rotation', 'crestMesh.position', 'dataRings.forEach'] as $token) {
             $this->assertStringContainsString($token, $js);
         }
         // …exactly one renderer per layer (world + shield), driven by one loop.

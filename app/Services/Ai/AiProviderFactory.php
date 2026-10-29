@@ -29,6 +29,7 @@ class AiProviderFactory
     {
         return match ($provider) {
             'ollama' => new OllamaProvider(),
+            'python_ai' => new PythonAiService(),
             'openai' => new OpenAiProvider(),
             'openrouter' => new OpenRouterProvider(),
             default => new OpenAiProvider(),

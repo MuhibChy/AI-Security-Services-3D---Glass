@@ -8,7 +8,7 @@ test.describe('public pages', () => {
     const failed = failedRequests(page);
     await page.goto('/');
     await dismissCookies(page);
-    await expect(page).toHaveTitle(/PerfectITSecurity|TechSupport|IT/i);
+    await expect(page).toHaveTitle(/AI Security Services|PerfectITSecurity|TechSupport|IT/i);
     // Full desktop nav appears at xl+ (1280px); narrower widths use the hamburger.
     const width = page.viewportSize().width;
     if (width >= 1280) {
@@ -73,8 +73,17 @@ test.describe('public pages', () => {
   });
 
   test('login rejects wrong credentials without leaking', async ({ page }) => {
+    // First page load after server boot pays cold-start cost (opcache,
+    // vite assets, 3D init on software WebGL) and measures 45s+ on this
+    // box under single-threaded php -S; 60s default leaves no headroom.
+    test.setTimeout(120 * 1000);
     await page.goto('/login');
-    await page.getByLabel(/email/i).fill('nobody@example.test');
+    // Throttle key is (username, ip): only 5 failed attempts per email are
+    // allowed per 15 minutes, and each viewport project runs this test
+    // against the shared DB. A unique unknown email per attempt keeps the
+    // failed-credential behaviour under test without tripping the limiter.
+    const wrongEmail = `pw.nobody.${Date.now()}.${page.viewportSize().width}@example.test`;
+    await page.getByLabel(/email/i).fill(wrongEmail);
     await page.getByLabel(/^password/i).fill('wrong-password');
     // Decoupled submit (see helpers.js loginAs): the default click()
     // navigation-wait races single-threaded php -S and times out even

@@ -1534,6 +1534,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ExpandedServiceCatalogueSeeder::class);
         $this->call(ExtraServicesSeeder::class);
         $this->call(AssetLifecycleCategorySeeder::class);
+        $this->call(ExtendedItServicesSeeder::class);
         $this->call(PromoCampaignSeeder::class);
         $this->call(DemoPortfolioSeeder::class);
         $this->call(DemoContentExpansionSeeder::class);

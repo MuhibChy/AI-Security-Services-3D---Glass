@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Resources — PerfectITSecurity')
+@section('title', 'Resources | AI Security Services')
 @section('description', 'Curated cybersecurity tools, threat intelligence, and IT resources.')
 
 @section('content')

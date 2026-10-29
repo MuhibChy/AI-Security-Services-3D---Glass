@@ -91,10 +91,10 @@ class EndToEndVariationTest extends TestCase
     }
 
     /** @test */
-    public function variation_03_multi_stage_eur()
+    public function variation_03_multi_stage_bdt()
     {
-        $customer = $this->customer('Germany', 'DE');
-        $order = $this->orderFor($customer, 1500, 'EUR');
+        $customer = $this->customer('Bangladesh', 'BD');
+        $order = $this->orderFor($customer, 1500, 'BDT');
         foreach ([500, 300, 300, 400] as $stage) {
             $this->pay($order, $stage);
         }
@@ -102,7 +102,7 @@ class EndToEndVariationTest extends TestCase
         $this->assertSame(4, Receipt::where('service_order_id', $order->id)->count());
         $this->assertEquals(0, (float) $order->fresh()->amount_due);
         $csv = $this->actingAs($customer)->get(route('portal.reports.mine', ['type' => 'payment', 'format' => 'csv']))->assertStatus(200)->streamedContent();
-        $this->assertStringContainsString('EUR', $csv);
+        $this->assertStringContainsString('BDT', $csv);
     }
 
     /** @test */
@@ -158,7 +158,8 @@ class EndToEndVariationTest extends TestCase
     public function variation_07_customer_service_report_with_print()
     {
         $customer = $this->customer('France', 'FR');
-        $order = $this->orderFor($customer, 900, 'EUR');
+        // Unsupported country falls back to USD.
+        $order = $this->orderFor($customer, 900, 'USD');
         $this->pay($order, 900);
         $html = $this->actingAs($customer)->get(route('portal.reports.service', $order->id))->assertStatus(200)->getContent();
         $this->assertStringContainsString($order->order_number, $html);
@@ -169,13 +170,14 @@ class EndToEndVariationTest extends TestCase
     }
 
     /** @test */
-    public function variation_08_different_currency_aed()
+    public function variation_08_different_currency_usd_fallback()
     {
+        // Unsupported country (AE) gets USD only — no AED in customer flow.
         $customer = $this->customer('United Arab Emirates', 'AE');
-        $this->assertSame(['AED', 'USD'], $customer->availableCurrencies());
-        $order = $this->orderFor($customer, 5250, 'AED');
+        $this->assertSame(['USD'], $customer->availableCurrencies());
+        $order = $this->orderFor($customer, 5250, 'USD');
         $this->pay($order, 5250);
-        $this->assertSame('AED', $order->invoices()->first()->currency);
+        $this->assertSame('USD', $order->invoices()->first()->currency);
         $pdf = $this->actingAs($customer)->get(route('portal.receipts.pdf', Receipt::where('service_order_id', $order->id)->first()->id))->assertStatus(200);
         $this->assertStringStartsWith('%PDF', $pdf->getContent());
     }
@@ -196,7 +198,8 @@ class EndToEndVariationTest extends TestCase
     public function variation_10_multiple_tasks_one_order_cash_memo()
     {
         $customer = $this->customer('Qatar', 'QA');
-        $order = $this->orderFor($customer, 2000, 'QAR');
+        // Unsupported country falls back to USD.
+        $order = $this->orderFor($customer, 2000, 'USD');
         $employee = User::factory()->create(['role' => 'employee', 'is_active' => true, 'email_verified_at' => now()]);
         foreach (['Survey', 'Implementation', 'Handover'] as $title) {
             Task::create([

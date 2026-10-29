@@ -24,9 +24,9 @@ class PaymentController extends Controller
         return view('admin.payments.index', compact('payments'));
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        $invoices = Invoice::whereIn('status', ['sent', 'viewed', 'overdue', 'partially_paid'])->get();
+        $invoices = Invoice::whereIn('status', ['sent', 'partially_paid', 'overdue'])->latest()->get();
 
         return view('admin.payments.create', compact('invoices'));
     }
@@ -36,82 +36,120 @@ class PaymentController extends Controller
         $validated = $request->validate([
             'invoice_id' => 'required|exists:invoices,id',
             'amount' => 'required|numeric|min:0.01',
-            'payment_method' => 'required|string|max:100',
-            'transaction_id' => 'nullable|string|max:255|unique:payments,transaction_id',
-            'currency' => 'nullable|string|size:3',
-            'notes' => 'nullable|string',
+            'payment_method' => 'required|string|max:50',
+            'currency' => 'nullable|string|max:3',
+            'transaction_id' => 'nullable|string|max:100',
+            'notes' => 'nullable|string|max:500',
         ]);
 
         return DB::transaction(function () use ($validated) {
             $invoice = Invoice::lockForUpdate()->findOrFail($validated['invoice_id']);
-            abort_unless(in_array($invoice->status, ['sent', 'viewed', 'overdue', 'partially_paid']), 422, 'Payments can only be recorded against an issued invoice.');
-            abort_if((float) $validated['amount'] > (float) $invoice->amount_due, 422, 'Payment exceeds the invoice balance.');
-            // Currency must match the invoice — never trust a browser-submitted
-            // code that would mix ledgers.
-            $currency = strtoupper($validated['currency'] ?? $invoice->currency ?? 'USD');
-            abort_unless($currency === strtoupper($invoice->currency ?? 'USD'), 422, 'Payment currency must match the invoice currency.');
-            $customerId = $invoice->customer_id;
+            abort_if(in_array($invoice->status, ['cancelled'], true), 422, 'Cannot process payment on a cancelled invoice.');
+            abort_if($invoice->status === 'paid', 422, 'Invoice is already fully paid.');
 
-            $payment = Payment::create([
-                'payment_number' => 'PAY-'.strtoupper(Str::random(8)),
-                'invoice_id' => $invoice->id,
-                'customer_id' => $customerId,
-                'service_order_id' => $invoice->service_order_id,
-                'amount' => $validated['amount'],
-                'currency' => $currency,
-                'status' => 'completed',
-                'payment_method' => $validated['payment_method'],
-                'transaction_id' => $validated['transaction_id'] ?? null,
-                'notes' => $validated['notes'] ?? null,
-                'paid_at' => now(),
-            ]);
-
-            // Keep the service order ledger + staged schedules in sync when this
-            // invoice belongs to an order (invoice-direct path previously skipped it).
-            if ($invoice->service_order_id && ($order = \App\Models\ServiceOrder::lockForUpdate()->find($invoice->service_order_id))) {
-                $order->amount_paid = round((float) $order->amount_paid + (float) $validated['amount'], 2);
-                $order->amount_due = max(0, round((float) $order->total - (float) $order->amount_paid, 2));
-                $order->save();
-                app(\App\Services\OrderPaymentAllocator::class)->allocate($order->fresh(), $payment->fresh(), (float) $validated['amount']);
+            if (! empty($validated['currency'])) {
+                abort_if(strtoupper($validated['currency']) !== strtoupper($invoice->currency), 422, 'Currency mismatch between payment and invoice.');
             }
 
-            // Update invoice
-            $invoice->amount_paid = round((float) $invoice->amount_paid + (float) $validated['amount'], 2);
-            $invoice->amount_due = max(0, round((float) $invoice->total - (float) $invoice->amount_paid, 2));
-            $invoice->status = $invoice->amount_due <= 0 ? 'paid' : 'partially_paid';
-            if ($invoice->status === 'paid') {
+            $amount = round((float) $validated['amount'], 2);
+            $due = round((float) $invoice->amount_due, 2);
+            abort_if($amount > $due, 422, "Payment amount ({$amount}) exceeds the amount due ({$due}).");
+
+            $currency = $invoice->currency ?: ($validated['currency'] ?? 'USD');
+            $paymentMethod = $validated['payment_method'] ?? 'bank_transfer';
+            $transactionId = ! empty($validated['transaction_id']) ? $validated['transaction_id'] : ('TXN-'.strtoupper(Str::random(10)));
+
+            // Idempotency: skip if already recorded
+            $existing = Payment::where('invoice_id', $invoice->id)->where('transaction_id', $transactionId)->lockForUpdate()->first();
+            if ($existing) {
+                return redirect()->route('admin.payments.index')->with('info', 'Payment already recorded.');
+            }
+
+            $payment = Payment::create([
+                'invoice_id' => $invoice->id,
+                'customer_id' => $invoice->customer_id,
+                'service_order_id' => $invoice->service_order_id,
+                'amount' => $amount,
+                'currency' => $currency,
+                'payment_method' => $paymentMethod,
+                'transaction_id' => $transactionId,
+                'status' => 'completed',
+                'paid_at' => now(),
+                'notes' => $validated['notes'] ?? ("Payment for invoice {$invoice->invoice_number}"),
+            ]);
+
+            // Update invoice balances
+            $newPaid = round((float) $invoice->amount_paid + $amount, 2);
+            $newDue = max(0, round((float) $invoice->total - $newPaid, 2));
+            $invoice->amount_paid = $newPaid;
+            $invoice->amount_due = $newDue;
+            $invoice->status = $newDue == 0 ? 'paid' : 'partially_paid';
+            if ($newDue == 0) {
                 $invoice->paid_at = now();
             }
             $invoice->save();
 
-            // Record financial transaction
-            app(FinancialService::class)->recordIncome(
-                $validated['amount'],
-                'Customer Payment',
-                "Payment {$payment->payment_number} received",
-                ['payment_id' => $payment->id, 'invoice_id' => $invoice->id, 'customer_id' => $customerId, 'currency' => $currency]
-            );
+            // Update linked ServiceOrder if present
+            if ($invoice->service_order_id) {
+                $order = \App\Models\ServiceOrder::lockForUpdate()->find($invoice->service_order_id);
+                if ($order && ! in_array($order->status, ['closed', 'cancelled'], true)) {
+                    $orderPaid = round((float) $order->amount_paid + $amount, 2);
+                    $orderDue = max(0, round((float) $order->total - $orderPaid, 2));
+                    $order->amount_paid = $orderPaid;
+                    $order->amount_due = $orderDue;
+                    if ($orderDue == 0) {
+                        $order->payment_authorization = 'fully_paid';
+                    } elseif ($orderPaid >= round((float) $order->total * 0.5, 2)) {
+                        $order->payment_authorization = 'deposit_paid';
+                    }
+                    $order->save();
 
-            AuditService::log('create', 'payments', $payment, 'Payment recorded');
-
-            // Notify the customer when their invoice is fully paid.
-            $invoice->refresh();
-            if ($invoice->status === 'paid' && $invoice->customer) {
-                $invoice->customer->notify(new \App\Notifications\InvoiceCreatedNotification($invoice, 'paid'));
+                    if (class_exists(\App\Models\Receipt::class)) {
+                        \App\Models\Receipt::firstOrCreate(
+                            ['payment_id' => $payment->id],
+                            [
+                                'receipt_number' => 'RCP-'.strtoupper(Str::random(8)),
+                                'service_order_id' => $order->id,
+                                'customer_id' => $order->customer_id,
+                                'invoice_id' => $invoice->id,
+                                'amount' => $amount,
+                                'remaining_balance' => $orderDue,
+                                'currency' => $currency,
+                                'issued_at' => now(),
+                            ]
+                        );
+                    }
+                }
             }
 
-            return redirect()->route('admin.payments.index')->with('success', 'Payment recorded!');
+            // Record Income in Financial Ledger
+            app(FinancialService::class)->recordIncome(
+                $amount,
+                'Invoice Payment',
+                "Payment {$payment->payment_number} for invoice {$invoice->invoice_number}",
+                [
+                    'payment_id' => $payment->id,
+                    'invoice_id' => $invoice->id,
+                    'customer_id' => $invoice->customer_id,
+                    'service_order_id' => $invoice->service_order_id,
+                    'currency' => $currency,
+                    'payment_method' => $paymentMethod,
+                ]
+            );
+
+            AuditService::log('payment.recorded', 'payments', $payment, "Payment of {$currency} {$amount} recorded for invoice {$invoice->invoice_number}.");
+
+            return redirect()->route('admin.payments.index')->with('success', 'Payment recorded successfully.');
         });
     }
 
-    /**
-     * Record a refund against a completed payment (finance only).
-     * Refund can never exceed the unrefunded remainder; balances on the
-     * invoice and order move back by the refunded amount; everything is
-     * audited. Closed orders are protected from post-closure refunds.
-     */
     public function refund(Request $request, $id)
     {
+        // Authorization check: only finance managers and admins can refund payments
+        if (!auth()->user()->isFinanceManager() && !auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $validated = $request->validate([
             'amount' => 'required|numeric|min:0.01',
             'reason' => 'required|string|max:500',

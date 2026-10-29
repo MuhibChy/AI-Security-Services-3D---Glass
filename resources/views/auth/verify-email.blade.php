@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Verify Email — PerfectITSecurity')
+@section('title', 'Verify Email | AI Security Services')
 
 @section('page-title', 'Email Verification')
 

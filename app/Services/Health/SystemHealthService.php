@@ -481,6 +481,10 @@ class SystemHealthService
         $invoicesCount = Invoice::count();
         $pendingAmount = Invoice::whereIn('status', ['sent', 'overdue', 'partially_paid'])->sum('amount_due');
 
+        // Deliverability probe: log/array transports are test-only sinks, so
+        // notifications written there never reach customers — flag as warning.
+        $mailDriver = (string) config('mail.default');
+
         $status = in_array($mailDriver, ['log', 'array']) ? 'warning' : 'healthy';
 
         return [
@@ -488,7 +492,7 @@ class SystemHealthService
             'check_name' => 'Invoicing, Expenses & Profit/Loss',
             'status' => $status,
             'response_time_ms' => (int) ((microtime(true) - $start) * 1000),
-            'message' => "{$invoicesCount} total invoices recorded (${$pendingAmount} pending collection).",
+            'message' => $invoicesCount.' total invoices recorded ($'.number_format((float) $pendingAmount, 2).' pending collection).',
             'details' => [
                 'total_invoices' => $invoicesCount,
                 'pending_receivables' => (float) $pendingAmount,
@@ -512,12 +516,14 @@ class SystemHealthService
     public function checkEmailAndNotifications(): array
     {
         $start = microtime(true);
-        $mailDriver = config('mail.default', 'log');
+        $mailDriver = (string) config('mail.default', 'log');
+
+        $status = in_array($mailDriver, ['log', 'array']) ? 'warning' : 'healthy';
 
         return [
             'module' => 'Email & Notifications',
             'check_name' => 'Transactional Email & Realtime Alerts',
-            'status' => 'healthy',
+            'status' => $status,
             'response_time_ms' => (int) ((microtime(true) - $start) * 1000),
             'message' => $status === 'healthy'
                 ? "Notification dispatcher configured with [{$mailDriver}] mail delivery driver."

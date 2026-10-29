@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', '429 — Rate Limited | PerfectITSecurity')
+@section('title', '429 — Rate Limited | AI Security Services')
 
 @section('content')
 <div class="min-h-[75vh] flex items-center justify-center px-4 sm:px-6 py-20 relative">

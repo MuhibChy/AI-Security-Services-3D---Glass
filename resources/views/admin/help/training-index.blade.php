@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'PerfectITSecurity Training Center')
+@section('title', 'AI Security Services Training Center')
 @section('page-title', 'Training Center')
 
 @section('content')
-<x-page-header sys="CONTENT://HELP" title="PerfectITSecurity Training Center" subtitle="Complete practical guidance for customer management, IT services, projects, payments, finance, support, work updates and daily operations." badge="HTML GUIDES" />
+<x-page-header sys="CONTENT://HELP" title="AI Security Services Training Center" subtitle="Complete practical guidance for customer management, IT services, projects, payments, finance, support, work updates and daily operations." badge="HTML GUIDES" />
 
 <div class="term-panel p-6 lg:p-8 mb-6">
-    <h2 class="heading-md mb-1">Learn the PerfectITSecurity platform step by step.</h2>
+    <h2 class="heading-md mb-1">Learn the AI Security Services platform step by step.</h2>
     <p class="body-md mb-4">Open any guide below. Every page follows the same structure: what it is, why it matters, who owns it, exact steps, a synthetic [TRAINING] example, expected results, mistakes to avoid, linked troubleshooting and the next lesson.</p>
     @php $recommended = \App\Support\RoleRegistry::trainingFor(auth()->user()->role ?? null); @endphp
     @if($recommended)

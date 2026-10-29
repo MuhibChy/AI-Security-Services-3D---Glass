@@ -15,8 +15,8 @@
 */
 
 return [
-    'default_currency' => env('PAYMENT_DEFAULT_CURRENCY', 'BDT'),
-    'supported_currencies' => array_values(array_filter(array_map('trim', explode(',', env('PAYMENT_SUPPORTED_CURRENCIES', 'BDT,GBP,USD,EUR'))))),
+    'default_currency' => env('PAYMENT_DEFAULT_CURRENCY', 'USD'),
+    'supported_currencies' => array_values(array_filter(array_map('trim', explode(',', env('PAYMENT_SUPPORTED_CURRENCIES', 'BDT,GBP,USD'))))),
     'timeout_seconds' => (int) env('PAYMENT_TIMEOUT_SECONDS', 900),
     'invoice_deadline_days' => (int) env('INVOICE_PAYMENT_DEADLINE_DAYS', 14),
 

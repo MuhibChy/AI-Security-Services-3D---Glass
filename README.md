@@ -86,7 +86,7 @@ The system combines a modern, high-aesthetic public website with interactive 3D 
 - **Automated SLA Engine**: Scheduled background checks for first-response and resolution deadlines with automatic notification escalation.
 
 ### Multi-Gateway Billing & Payments
-- **Multi-Currency Support**: Support for BDT, USD, GBP, and EUR with automatic or manual exchange rate synchronization.
+- **Multi-Currency Support**: Support for BDT, USD, and GBP with automatic or manual exchange rate synchronization.
 - **Flexible Gateway Integrations**: Stripe Checkout integration, bKash tokenized payment checkout, Nagad, Rocket, and PayPal payment workflows.
 - **Customer Wallets**: In-app wallet management, balance top-ups, transaction ledger, and wallet-based invoice settlement.
 

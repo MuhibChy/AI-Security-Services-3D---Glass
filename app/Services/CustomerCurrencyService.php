@@ -89,6 +89,13 @@ class CustomerCurrencyService
     }
 
     /**
+     * Supported customer-facing currencies — locked to BD/UK/US only.
+     * Historical records (EUR, AED, etc.) remain in the database but are
+     * not selectable by any customer account.
+     */
+    public const ALLOWED_CURRENCIES = ['BDT', 'GBP', 'USD'];
+
+    /**
      * Currencies the customer may use, in order: [local?, USD].
      * Cached per account; invalidated automatically when the user record
      * (country/preference) changes.
@@ -103,7 +110,12 @@ class CustomerCurrencyService
         return Cache::remember($key, 600, function () use ($user) {
             $fresh = $user->fresh() ?? $user;
             $local = $this->localCurrencyFor($fresh);
-            if (! $local || $local === self::FALLBACK) {
+            // Enforce the customer-facing allowlist. Unsupported locals
+            // (EUR, AED, etc.) fall back to USD — the universal default.
+            if (! $local || ! in_array($local, self::ALLOWED_CURRENCIES, true)) {
+                return [self::FALLBACK];
+            }
+            if ($local === self::FALLBACK) {
                 return [self::FALLBACK];
             }
 

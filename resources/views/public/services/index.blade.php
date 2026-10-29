@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'IT Services Catalog — PerfectITSecurity')
+@section('title', 'IT Services Catalog | AI Security Services')
 @section('description', 'Enterprise IT services catalog: cybersecurity defense, cloud infrastructure, managed IT support, web development, and digital automation.')
 
 @section('content')
@@ -111,13 +111,18 @@
 @if($category->services->count() > 0)
 <section class="relative w-full py-16 sm:py-20 lg:py-24 border-b border-term-300 dark:border-white/5" aria-labelledby="cat-{{ $category->id }}">
     <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
-        <div class="max-w-3xl">
-            <div class="term-sec-head" aria-hidden="true">
-                <span class="term-sec-num">{{ str_pad((string)($loop->iteration + 1), 2, '0', STR_PAD_LEFT) }}</span>
-                <span class="term-sec-label">SERVICES://{{ strtoupper($category->slug ?? $category->name) }}</span>
+        <div class="grid lg:grid-cols-12 gap-8 items-center mb-10">
+            <div class="lg:col-span-8 max-w-3xl">
+                <div class="term-sec-head" aria-hidden="true">
+                    <span class="term-sec-num">{{ str_pad((string)($loop->iteration + 1), 2, '0', STR_PAD_LEFT) }}</span>
+                    <span class="term-sec-label">SERVICES://{{ strtoupper($category->slug ?? $category->name) }}</span>
+                </div>
+                <h2 id="cat-{{ $category->id }}" class="term-sec-title text-3xl sm:text-4xl">{{ $category->description ?? $category->name }}</h2>
+                <p class="term-sec-desc mt-3">{{ $category->services->count() }} module{{ $category->services->count() === 1 ? '' : 's' }} in {{ $category->name }}</p>
             </div>
-            <h2 id="cat-{{ $category->id }}" class="term-sec-title text-3xl sm:text-4xl">{{ $category->description ?? $category->name }}</h2>
-            <p class="term-sec-desc mt-3">{{ $category->services->count() }} module{{ $category->services->count() === 1 ? '' : 's' }} in {{ $category->name }}</p>
+            <div class="lg:col-span-4 hidden lg:block overflow-hidden rounded-xl border border-royal-500/20 shadow-md max-w-xs ml-auto w-full">
+                <x-service-3d-visual :type="$category->slug" />
+            </div>
         </div>
 
         <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">

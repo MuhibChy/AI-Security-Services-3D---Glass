@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Accessibility Statement — PerfectITSecurity')
-@section('description', 'PerfectITSecurity accessibility commitment, compliance goals, and digital inclusion standards.')
+@section('title', 'Accessibility Statement | AI Security Services')
+@section('description', 'AI Security Services accessibility commitment, compliance goals, and digital inclusion standards.')
 
 @section('content')
 
@@ -16,7 +16,7 @@
             </div>
             <h1 id="a11y-hero-heading" class="font-display font-extrabold tracking-tight leading-[1.02] text-4xl sm:text-6xl text-navy-900 dark:text-white text-balance">ACCESSIBILITY STATEMENT</h1>
             <p class="mt-6 text-base sm:text-lg leading-relaxed text-slate-600 dark:text-term-800">
-                PerfectITSecurity is committed to ensuring digital accessibility for people of all abilities. We continuously improve our user experience and apply relevant accessibility standards.
+                AI Security Services is committed to ensuring digital accessibility for people of all abilities. We continuously improve our user experience and apply relevant accessibility standards.
             </p>
             <div class="mt-6 font-mono text-[11px] tracking-wider text-term-700">
                 <span>STANDARD:// WCAG 2.1 LEVEL AA</span>

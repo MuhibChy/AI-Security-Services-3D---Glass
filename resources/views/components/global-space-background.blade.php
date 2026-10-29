@@ -3,7 +3,7 @@
      page inherits the same continuous environment automatically.
      Layers (all fixed, z-0, pointer-events-none, aria-hidden):
        stars → galaxies/nebula → planet + moon → orbits → dust →
-       ambient wash → LEFT spotlight (PerfectITSecurity lighting the universe).
+       ambient wash → LEFT spotlight (AI Security Services lighting the universe).
      Pure CSS/SVG: covers any document height (fixed viewport layer),
      zero JS cost, static fallback when motion is reduced. --}}
 <div class="gsb" aria-hidden="true">

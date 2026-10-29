@@ -215,7 +215,7 @@ class AiAgentService
     {
         return [
             'name' => \App\Models\Setting::get('company_name', config('app.name')),
-            'email' => \App\Models\Setting::get('company_email', 'support@perfectitsecurity.test'),
+            'email' => \App\Models\Setting::get('company_email', 'support@ai-security-services.com'),
             'phone' => \App\Models\Setting::get('company_phone', '+1 (800) 555-0199'),
             'currency' => \App\Models\Setting::get('currency', 'USD'),
             'hours' => '24/7/365 Continuous Security & IT Support',

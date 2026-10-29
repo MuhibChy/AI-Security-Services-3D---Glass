@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Get a Quote — PerfectITSecurity')
+@section('title', 'Get a Quote | AI Security Services')
 @section('description', 'Request a custom quote for IT services, cybersecurity, cloud solutions, and managed services. Free consultation with no obligation.')
 
 @section('content')

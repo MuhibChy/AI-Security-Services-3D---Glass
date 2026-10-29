@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', 'My Projects — Customer Portal')
 
@@ -74,7 +74,7 @@
                         <td data-label="Progress" class="w-36">
                             <div class="flex items-center gap-2">
                                 <div class="flex-1 bg-white/10 h-2 overflow-hidden">
-                                    <div class="h-2" style="width: {{ $project->progress ?? 0 }}%; background: linear-gradient(90deg,#00E67A,#4DA3FF);"></div>
+                                    <div class="h-2" style="width: {{ $project->progress ?? 0 }}%; background: linear-gradient(90deg,#36D9FF,#287BFF);"></div>
                                 </div>
                                 <span class="text-xs font-mono font-semibold tabular-nums">{{ $project->progress ?? 0 }}%</span>
                             </div>
@@ -106,3 +106,4 @@
     </div>
 </div>
 @endsection
+

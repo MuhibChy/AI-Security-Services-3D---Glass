@@ -85,7 +85,7 @@ class PaymentProviderSystemTest extends TestCase
         $finance = $this->staff('finance_manager');
         $this->actingAs($finance)->post(route('admin.bank-accounts.store'), [
             'label' => 'EBL Collections', 'country' => 'Bangladesh', 'currency' => 'BDT',
-            'account_name' => 'PerfectITSecurity', 'bank_name' => 'Eastern Bank',
+            'account_name' => 'AI Security Services', 'bank_name' => 'Eastern Bank',
             'purpose' => 'collections',
         ])->assertRedirect();
         $account = BankAccount::firstOrFail();

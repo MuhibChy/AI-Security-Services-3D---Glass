@@ -79,7 +79,7 @@ class PaymentGoLiveReadinessTest extends TestCase
     {
         $finance = $this->staff('finance_manager');
         \App\Models\ExchangeRate::updateOrCreate(
-            ['base_currency' => 'USD', 'target_currency' => 'EUR'],
+            ['base_currency' => 'USD', 'target_currency' => 'GBP'],
             ['rate' => 0.92, 'fetched_at' => now()]
         );
         $p = $this->provider('paypal', ['type' => 'gateway', 'country' => 'International', 'currencies' => ['USD'], 'min_amount' => 1, 'max_amount' => 10000]);

@@ -1,23 +1,23 @@
-{{-- Foreground glove control (authenticated users only). Guests always see
+﻿{{-- Foreground glove control (authenticated users only). Guests always see
      moving mode and get no control. Single persistence request per user
      action — never during dragging. Hidden entirely if WebGL is down. --}}
 @auth
 <div id="glove-control" data-glove-ui class="fixed left-4 bottom-4 z-40 hidden" aria-label="3D glove controls">
-    <div class="dark-island rounded-2xl border border-[#00FF00]/30 bg-black px-3.5 py-3 w-52">
+    <div class="dark-island rounded-2xl border border-[#36D9FF]/30 bg-[#071A38] px-3.5 py-3 w-52">
         <div class="flex items-center justify-between mb-2">
             <span class="text-[11px] font-semibold uppercase tracking-widest text-gray-400">3D Glove</span>
             <span class="flex items-center gap-1.5 text-[11px] font-medium text-white">
-                <span id="glove-dot" class="w-2 h-2 rounded-full bg-[#00FF00] animate-pulse inline-block"></span>
+                <span id="glove-dot" class="w-2 h-2 rounded-full bg-[#36D9FF] animate-pulse inline-block"></span>
                 <span id="glove-status">Moving</span>
             </span>
         </div>
         <div id="glove-hint" class="hidden text-[11px] leading-snug text-gray-500 mb-2">Drag the glove to your preferred position, then save.</div>
         <div id="glove-msg" class="hidden text-[11px] leading-snug mb-2" role="status"></div>
         <div class="flex flex-wrap gap-1.5">
-            <button id="glove-fix" type="button" class="px-3 py-1.5 text-[11px] font-medium border border-[#00FF00]/30 text-white hover:bg-[#00FF00]/10 transition-colors rounded">Fix Position</button>
-            <button id="glove-save" type="button" class="px-3 py-1.5 text-[11px] font-medium bg-[#00FF00] text-black hover:bg-[#00FF00]/80 transition-colors rounded hidden">Save Position</button>
+            <button id="glove-fix" type="button" class="px-3 py-1.5 text-[11px] font-medium border border-[#36D9FF]/30 text-white hover:bg-[#36D9FF]/10 transition-colors rounded">Fix Position</button>
+            <button id="glove-save" type="button" class="px-3 py-1.5 text-[11px] font-medium bg-[#36D9FF] text-[#05142E] hover:bg-[#36D9FF]/80 transition-colors rounded hidden">Save Position</button>
             <button id="glove-cancel" type="button" class="px-3 py-1.5 text-[11px] font-medium border border-gray-700 text-gray-400 hover:bg-gray-800 transition-colors rounded hidden">Cancel</button>
-            <button id="glove-resume" type="button" class="px-3 py-1.5 text-[11px] font-medium border border-[#00FF00]/30 text-white hover:bg-[#00FF00]/10 transition-colors rounded hidden">Resume Moving</button>
+            <button id="glove-resume" type="button" class="px-3 py-1.5 text-[11px] font-medium border border-[#36D9FF]/30 text-white hover:bg-[#36D9FF]/10 transition-colors rounded hidden">Resume Moving</button>
             <button id="glove-reset" type="button" class="px-3 py-1.5 text-[11px] font-medium border border-gray-700 text-gray-400 hover:bg-gray-800 transition-colors rounded hidden">Reset Position</button>
         </div>
     </div>
@@ -50,15 +50,15 @@ function initGloveControl(scene) {
 
     function showMsg(text, ok) {
         msg.textContent = text;
-        msg.classList.remove('hidden', 'text-[#00FF00]', 'text-red-400');
-        msg.classList.add(ok ? 'text-[#00FF00]' : 'text-red-400');
+        msg.classList.remove('hidden', 'text-[#36D9FF]', 'text-red-400');
+        msg.classList.add(ok ? 'text-[#36D9FF]' : 'text-red-400');
         clearTimeout(showMsg.t);
         showMsg.t = setTimeout(() => msg.classList.add('hidden'), 4000);
     }
 
     function render() {
         statusEl.textContent = positioning ? 'Positioning' : (mode === 'fixed' ? 'Fixed' : 'Moving');
-        dot.className = 'w-2 h-2 rounded-full inline-block ' + (positioning ? 'bg-yellow-400 animate-pulse' : (mode === 'fixed' ? 'bg-blue-400' : 'bg-[#00FF00] animate-pulse'));
+        dot.className = 'w-2 h-2 rounded-full inline-block ' + (positioning ? 'bg-yellow-400 animate-pulse' : (mode === 'fixed' ? 'bg-blue-400' : 'bg-[#36D9FF] animate-pulse'));
         hint.classList.toggle('hidden', !positioning);
         btn.fix.classList.toggle('hidden', positioning || mode === 'fixed');
         btn.save.classList.toggle('hidden', !positioning);
@@ -142,3 +142,4 @@ function initGloveControl(scene) {
 })();
 </script>
 @endauth
+

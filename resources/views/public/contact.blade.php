@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Direct Infrastructure & SOC Contact — PerfectITSecurity')
+@section('title', 'Direct Infrastructure & SOC Contact | AI Security Services')
 @section('description', 'Connect with our senior cybersecurity engineers, solutions architects, and 24/7 technical operations center.')
 
 @section('content')

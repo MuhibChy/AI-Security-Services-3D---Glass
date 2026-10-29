@@ -1,5 +1,6 @@
 import Alpine from 'alpinejs';
 import ScrollAnimations from './scroll-animations.js';
+import './service-cards.js';
 
 window.Alpine = Alpine;
 

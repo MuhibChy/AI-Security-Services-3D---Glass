@@ -31,13 +31,13 @@ class PaymentReadinessService
         'bkash' => ['name' => 'bKash', 'type' => 'mobile_wallet', 'currencies' => ['BDT'], 'needs_bank_account' => false, 'webhook' => true],
         'nagad' => ['name' => 'Nagad', 'type' => 'mobile_wallet', 'currencies' => ['BDT'], 'needs_bank_account' => false, 'webhook' => true],
         'rocket' => ['name' => 'Rocket', 'type' => 'mobile_wallet', 'currencies' => ['BDT'], 'needs_bank_account' => false, 'webhook' => true],
-        'bank_transfer' => ['name' => 'Bank Transfer', 'type' => 'bank', 'currencies' => ['BDT', 'GBP', 'USD', 'EUR'], 'needs_bank_account' => true, 'webhook' => false],
-        'stripe' => ['name' => 'Stripe / Card', 'type' => 'card', 'currencies' => ['GBP', 'USD', 'EUR'], 'needs_bank_account' => false, 'webhook' => true],
-        'card' => ['name' => 'Card', 'type' => 'card', 'currencies' => ['GBP', 'USD', 'EUR'], 'needs_bank_account' => false, 'webhook' => true],
-        'paypal' => ['name' => 'PayPal', 'type' => 'gateway', 'currencies' => ['GBP', 'USD', 'EUR'], 'needs_bank_account' => false, 'webhook' => true],
-        'international_gateway' => ['name' => 'International Gateway', 'type' => 'gateway', 'currencies' => ['GBP', 'USD', 'EUR'], 'needs_bank_account' => false, 'webhook' => true],
-        'wallet' => ['name' => 'Wallet', 'type' => 'wallet', 'currencies' => ['BDT', 'GBP', 'USD', 'EUR'], 'needs_bank_account' => false, 'webhook' => false],
-        'manual' => ['name' => 'Manual / Cash', 'type' => 'manual', 'currencies' => ['BDT', 'GBP', 'USD', 'EUR'], 'needs_bank_account' => false, 'webhook' => false],
+        'bank_transfer' => ['name' => 'Bank Transfer', 'type' => 'bank', 'currencies' => ['BDT', 'GBP', 'USD'], 'needs_bank_account' => true, 'webhook' => false],
+        'stripe' => ['name' => 'Stripe / Card', 'type' => 'card', 'currencies' => ['GBP', 'USD'], 'needs_bank_account' => false, 'webhook' => true],
+        'card' => ['name' => 'Card', 'type' => 'card', 'currencies' => ['GBP', 'USD'], 'needs_bank_account' => false, 'webhook' => true],
+        'paypal' => ['name' => 'PayPal', 'type' => 'gateway', 'currencies' => ['GBP', 'USD'], 'needs_bank_account' => false, 'webhook' => true],
+        'international_gateway' => ['name' => 'International Gateway', 'type' => 'gateway', 'currencies' => ['GBP', 'USD'], 'needs_bank_account' => false, 'webhook' => true],
+        'wallet' => ['name' => 'Wallet', 'type' => 'wallet', 'currencies' => ['BDT', 'GBP', 'USD'], 'needs_bank_account' => false, 'webhook' => false],
+        'manual' => ['name' => 'Manual / Cash', 'type' => 'manual', 'currencies' => ['BDT', 'GBP', 'USD'], 'needs_bank_account' => false, 'webhook' => false],
     ];
 
     /** Env keys required per provider key + environment (presence only). */
@@ -259,7 +259,7 @@ class PaymentReadinessService
     // ---- FX health ----
     public function fxHealth(): array
     {
-        $currencies = config('payments.supported_currencies', ['BDT', 'GBP', 'USD', 'EUR']);
+        $currencies = config('payments.supported_currencies', ['BDT', 'GBP', 'USD']);
         $latest = ExchangeRate::orderByDesc('fetched_at')->first();
         $stale = ! $latest || ! $latest->fetched_at || $latest->fetched_at->lt(now()->subHours(24));
 
@@ -310,7 +310,7 @@ class PaymentReadinessService
             ],
             'Security' => [
                 ['label' => 'APP_DEBUG=false', 'done' => ! ((bool) config('app.debug') && app()->environment('production')), 'hint' => 'Flagged in config check.'],
-                ['label' => 'Secure cookies', 'done' => (bool) env('SESSION_SECURE_COOKIE', false) || ! app()->environment('production'), 'hint' => 'SESSION_SECURE_COOKIE=true in production.'],
+                ['label' => 'Secure cookies', 'done' => (bool) config('session.secure') || ! app()->environment('production'), 'hint' => 'SESSION_SECURE_COOKIE=true in production.'],
                 ['label' => 'CSRF', 'done' => true, 'hint' => 'Web middleware + VerifyCsrfToken; webhooks are signed server-to-server.'],
                 ['label' => 'RBAC', 'done' => true, 'hint' => 'Finance-gated payment admin; owner-scoped customer views.'],
                 ['label' => 'Webhook verification', 'done' => true, 'hint' => 'Signature check in PaymentWebhookService; replay-safe via event_id.'],

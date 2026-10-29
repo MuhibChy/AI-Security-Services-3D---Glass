@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Careers — Join Our Global IT Team')
-@section('description', 'Join PerfectITSecurity — a world-class IT services company. We are hiring cybersecurity experts, cloud engineers, developers, and IT support specialists across multiple countries.')
+@section('description', 'Join AI Security Services — a world-class IT services company. We are hiring cybersecurity experts, cloud engineers, developers, and IT support specialists across multiple countries.')
 
 @section('content')
 
@@ -36,7 +36,7 @@
 {{-- Why join us --}}
 <section class="relative w-full py-16 sm:py-20 lg:py-24 border-t border-term-300 dark:border-white/5" id="culture" aria-labelledby="culture-heading">
     <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
-        <x-section-head num="01" label="CAREERS://CULTURE" title="Why top engineers choose us." desc="Life at PerfectITSecurity — distributed, technical, and growth-driven." />
+        <x-section-head num="01" label="CAREERS://CULTURE" title="Why top engineers choose us." desc="Life at AI Security Services — distributed, technical, and growth-driven." />
         <span id="culture-heading" class="sr-only">Why join us</span>
 
         <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">

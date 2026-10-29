@@ -18,7 +18,7 @@
 <body>
     <div class="header">
         <table style="width:100%;"><tr>
-            <td><div class="logo">PerfectITSecurity</div><div style="color:#64748b;">Enterprise IT Infrastructure & Cybersecurity</div></td>
+            <td><div class="logo">AI Security Services</div><div style="color:#64748b;">Enterprise IT Infrastructure & Cybersecurity</div></td>
             <td style="text-align:right;"><div class="doc-title">SERVICE REPORT</div><div style="font-weight:600;">{{ $project->project_number }}</div><div>Status: {{ strtoupper(str_replace('_', ' ', $project->status)) }}</div></td>
         </tr></table>
     </div>

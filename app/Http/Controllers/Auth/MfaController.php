@@ -75,7 +75,7 @@ class MfaController extends Controller
 
         $secret = $totp->generateSecret();
         session(['mfa_setup_secret' => $secret]);
-        $uri = $totp->getProvisioningUri($secret, $user->email, config('app.name', 'PerfectITSecurity'));
+        $uri = $totp->getProvisioningUri($secret, $user->email, config('app.name', 'AI Security Services'));
 
         return view('auth.mfa-setup', [
             'secret' => $user->hasMfaEnabled() ? null : $secret,

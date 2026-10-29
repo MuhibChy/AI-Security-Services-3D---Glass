@@ -1,4 +1,4 @@
-{{-- PERFECTITSECURITY terminal environment.
+{{-- AI SECURITY SERVICES terminal environment.
      ONE fixed CSS layer per page: near-black field, fine engineering grid,
      edge vignette, faint scanline texture and a slow drifting scan bar.
      Pure CSS/SVG — zero JS, zero WebGL, zero network cost.

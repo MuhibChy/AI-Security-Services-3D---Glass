@@ -41,6 +41,10 @@ class AppServiceProvider extends ServiceProvider
         }
         \App\Models\ServiceOrder::observe(\App\Observers\ServiceOrderObserver::class);
 
+        // Public services index cache invalidation on catalogue mutations.
+        \App\Models\Service::observe(\App\Observers\ServiceCatalogueObserver::class);
+        \App\Models\ServiceCategory::observe(\App\Observers\ServiceCategoryObserver::class);
+
         // Backup status widget for the admin health center (admin-only views).
         \Illuminate\Support\Facades\View::composer('admin.health.index', function ($view) {
             try {

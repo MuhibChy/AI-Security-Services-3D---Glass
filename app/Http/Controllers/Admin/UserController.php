@@ -132,7 +132,7 @@ class UserController extends Controller
             'approval_note' => $data['approval_note'] ?? null,
         ]);
         \App\Models\AuditLog::log('user.approved', 'users', $user, 'Account approved by '.auth()->user()->name.'.', ['is_active' => $wasActive], ['is_active' => true]);
-        \App\Services\ServiceTrackingService::notify($user->id, 'account_approved', 'Account approved', 'Your PerfectITSecurity account has been approved. You can now use the platform.');
+        \App\Services\ServiceTrackingService::notify($user->id, 'account_approved', 'Account approved', 'Your AI Security Services account has been approved. You can now use the platform.');
 
         return back()->with('success', "User {$user->name} approved.");
     }

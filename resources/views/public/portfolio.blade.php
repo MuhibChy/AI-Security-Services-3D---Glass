@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Portfolio — PerfectITSecurity')
+@section('title', 'Portfolio | AI Security Services')
 @section('description', 'Demo portfolio: sample IT, cybersecurity, cloud and software concept projects clearly labeled as demonstrations.')
 
 @section('content')

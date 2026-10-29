@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Cookie Policy — PerfectITSecurity')
-@section('description', 'Information regarding how PerfectITSecurity uses cookies, sessions, and telemetry on our website and customer portal.')
+@section('title', 'Cookie Policy | AI Security Services')
+@section('description', 'Information regarding how AI Security Services uses cookies, sessions, and telemetry on our website and customer portal.')
 
 @section('content')
 

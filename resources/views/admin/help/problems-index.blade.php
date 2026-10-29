@@ -3,7 +3,7 @@
 @section('page-title', 'Problem & Solution')
 
 @section('content')
-<x-page-header sys="CONTENT://HELP" title="PerfectITSecurity Problem & Solution Center" subtitle="Find the problem, follow the safe steps, verify the result, escalate cleanly if needed." badge="TROUBLESHOOTING" />
+<x-page-header sys="CONTENT://HELP" title="AI Security Services Problem & Solution Center" subtitle="Find the problem, follow the safe steps, verify the result, escalate cleanly if needed." badge="TROUBLESHOOTING" />
 
 <div class="term-panel p-6 lg:p-8 mb-6">
     <form method="GET" action="{{ route('admin.help.problems.index') }}" class="flex flex-col sm:flex-row gap-2">

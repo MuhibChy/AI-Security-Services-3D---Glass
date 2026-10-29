@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', $post->title . ' — PerfectITSecurity Blog')
+@section('title', $post->title . ' | AI Security Services Blog')
 @section('description', $post->excerpt ?? 'Enterprise cybersecurity and IT infrastructure insights.')
 
 @section('content')
@@ -28,7 +28,7 @@
                     <div class="w-8 h-8 border border-accent/50 bg-accent/10 flex items-center justify-center font-bold text-accent-soft text-xs" aria-hidden="true">
                         {{ substr($post->author->name ?? 'Admin', 0, 1) }}
                     </div>
-                    <span class="font-medium text-slate-600 dark:text-term-800">{{ $post->author->name ?? 'PerfectITSecurity Editorial' }}</span>
+                    <span class="font-medium text-slate-600 dark:text-term-800">{{ $post->author->name ?? 'AI Security Services Editorial' }}</span>
                 </div>
                 <span aria-hidden="true">/</span>
                 <span class="font-mono text-[11px] tracking-wider">{{ $post->published_at?->format('M d, Y') ?? $post->created_at->format('M d, Y') }}</span>

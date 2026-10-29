@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Frequently Asked Questions — PerfectITSecurity')
+@section('title', 'Frequently Asked Questions | AI Security Services')
 @section('description', 'Find answers to common questions about our IT support services, cybersecurity solutions, pricing, and more.')
 
 @section('content')
@@ -61,11 +61,11 @@
         <div x-show="activeCategory === 'general'" class="max-w-4xl mx-auto space-y-3">
             @php
             $faqs = [
-                ['q' => 'What IT services does PerfectITSecurity provide?', 'a' => 'We provide comprehensive IT services including cybersecurity (penetration testing, vulnerability assessments, security audits), managed IT support, cloud infrastructure, web and software development, IT consulting, and digital transformation services.'],
+                ['q' => 'What IT services does AI Security Services provide?', 'a' => 'We provide comprehensive IT services including cybersecurity (penetration testing, vulnerability assessments, security audits), managed IT support, cloud infrastructure, web and software development, IT consulting, and digital transformation services.'],
                 ['q' => 'Which industries do you serve?', 'a' => 'We serve a wide range of industries including healthcare, finance and banking, legal, education, e-commerce, manufacturing, and government organisations. Our solutions are tailored to each industry\'s specific compliance and operational requirements.'],
                 ['q' => 'Do you provide international support?', 'a' => 'Yes. We support clients across the United Kingdom, United States, Bangladesh, Europe, and other regions. Our team operates across multiple time zones and can provide remote and on-site support as needed.'],
                 ['q' => 'What are your support hours?', 'a' => 'Our standard support operates Monday to Friday, 9 AM to 6 PM local time. Premium and enterprise customers have access to 24/7/365 emergency support with guaranteed response times based on their SLA tier.'],
-                ['q' => 'How do I get started with PerfectITSecurity?', 'a' => 'Simply visit our Contact page or request a free consultation. Our solutions team will assess your requirements, recommend the right services, and provide a tailored proposal with transparent pricing.'],
+                ['q' => 'How do I get started with AI Security Services?', 'a' => 'Simply visit our Contact page or request a free consultation. Our solutions team will assess your requirements, recommend the right services, and provide a tailored proposal with transparent pricing.'],
             ];
             @endphp
             @foreach($faqs as $i => $faq)

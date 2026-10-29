@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Terms of Service — PerfectITSecurity')
-@section('description', 'Terms and conditions governing use of PerfectITSecurity services, customer portal, and IT consulting agreements.')
+@section('title', 'Terms of Service | AI Security Services')
+@section('description', 'Terms and conditions governing use of AI Security Services, customer portal, and IT consulting agreements.')
 
 @section('content')
 
@@ -16,7 +16,7 @@
             </div>
             <h1 id="terms-hero-heading" class="font-display font-extrabold tracking-tight leading-[1.02] text-4xl sm:text-6xl text-navy-900 dark:text-white text-balance">TERMS OF SERVICE</h1>
             <p class="mt-6 text-base sm:text-lg leading-relaxed text-slate-600 dark:text-term-800">
-                These terms establish the rules, guidelines, and contractual obligations between your organization and PerfectITSecurity when accessing our portal and engaging our managed IT services.
+                These terms establish the rules, guidelines, and contractual obligations between your organization and AI Security Services when accessing our portal and engaging our managed IT services.
             </p>
             <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] tracking-wider text-term-700">
                 <span>EFFECTIVE:// SEPTEMBER 2026</span>
@@ -36,14 +36,14 @@
                 <div>
                     <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-white mb-4">1. Acceptance of Terms</h2>
                     <p class="leading-relaxed">
-                        By registering an account, utilizing the PerfectITSecurity customer portal, or contracting for IT support, infrastructure engineering, or cybersecurity consulting, you agree to be legally bound by these Terms of Service and all incorporated service schedules.
+                        By registering an account, utilizing the AI Security Services customer portal, or contracting for IT support, infrastructure engineering, or cybersecurity consulting, you agree to be legally bound by these Terms of Service and all incorporated service schedules.
                     </p>
                 </div>
 
                 <div>
                     <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-white mb-4">2. Provision of Managed Services</h2>
                     <p class="leading-relaxed mb-4">
-                        PerfectITSecurity agrees to deliver services in accordance with the specifications outlined in relevant Work Orders, Quotations, and Master Services Agreements (MSAs). Service availability, target resolution times, and priority classifications are governed by our Service Level Agreement (SLA).
+                        AI Security Services agrees to deliver services in accordance with the specifications outlined in relevant Work Orders, Quotations, and Master Services Agreements (MSAs). Service availability, target resolution times, and priority classifications are governed by our Service Level Agreement (SLA).
                     </p>
                 </div>
 
@@ -64,7 +64,7 @@
                 <div>
                     <h2 class="font-display text-2xl font-bold text-navy-900 dark:text-white mb-4">5. Intellectual Property &amp; Confidentiality</h2>
                     <p class="leading-relaxed mb-4">
-                        Each party maintains full ownership of its pre-existing intellectual property. PerfectITSecurity maintains strict confidentiality regarding client network topologies, server credentials, codebases, and corporate data discovered during technical maintenance.
+                        Each party maintains full ownership of its pre-existing intellectual property. AI Security Services maintains strict confidentiality regarding client network topologies, server credentials, codebases, and corporate data discovered during technical maintenance.
                     </p>
                 </div>
 

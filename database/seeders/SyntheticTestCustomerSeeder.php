@@ -34,13 +34,13 @@ class SyntheticTestCustomerSeeder extends Seeder
         ['01', 'United Kingdom', 'UK', '+447700900101', ['GBP', 'USD']],
         ['02', 'United States', 'US', '+12025550102', ['USD']],
         ['03', 'Bangladesh', 'BD', '+8801700000103', ['BDT', 'USD']],
-        ['04', 'Germany', 'DE', '+491700000104', ['EUR', 'USD']],
-        ['05', 'United Arab Emirates', 'AE', '+971500000105', ['AED', 'USD']],
-        ['06', 'Saudi Arabia', 'SA', '+966500000106', ['SAR', 'USD']],
-        ['07', 'Kuwait', 'KW', '+96550000107', ['KWD', 'USD']],
+        ['04', 'Germany', 'DE', '+491700000104', ['USD']],
+        ['05', 'United Arab Emirates', 'AE', '+971500000105', ['USD']],
+        ['06', 'Saudi Arabia', 'SA', '+966500000106', ['USD']],
+        ['07', 'Kuwait', 'KW', '+96550000107', ['USD']],
         ['08', 'Atlantis', null, '+819000001108', ['USD']],
-        ['09', 'France', 'FR', '+33600000109', ['EUR', 'USD']],
-        ['10', 'Qatar', 'QA', '+97450000110', ['QAR', 'USD']],
+        ['09', 'France', 'FR', '+33600000109', ['USD']],
+        ['10', 'Qatar', 'QA', '+97450000110', ['USD']],
     ];
 
     public function run(): void

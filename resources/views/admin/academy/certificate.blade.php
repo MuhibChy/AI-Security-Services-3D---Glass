@@ -8,7 +8,7 @@
 <div class="max-w-3xl mx-auto">
     <div class="term-panel p-10 text-center relative overflow-hidden">
         <div class="absolute top-0 left-0 right-0 h-1.5" style="background: linear-gradient(90deg,#16A34A,#2563EB);"></div>
-        <p class="label mb-2">PerfectITSecurity Academy · Internal Training Record</p>
+        <p class="label mb-2">AI Security Services Academy · Internal Training Record</p>
         <h2 class="heading-lg mb-1">{{ $certificate->course->title }}</h2>
         <p class="body-md mb-6">This record confirms internal training completion (not an external professional certification).</p>
         <div class="text-2xl font-bold text-slate-900 dark:text-white mb-1">{{ $certificate->user->name }}</div>

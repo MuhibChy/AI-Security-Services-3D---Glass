@@ -21,7 +21,7 @@ $family = match(true) {
 
 // Terminal dot color per status family.
 $dot = match(true) {
-    in_array($normalized, ['active','paid','completed','approved','accepted','verified','resolved','enabled','online','success','successful']) => 'background:#00E67A;box-shadow:0 0 8px rgba(0,230,122,0.8)',
+    in_array($normalized, ['active','paid','completed','approved','accepted','verified','resolved','enabled','online','success','successful']) => 'background:#10B981;box-shadow:0 0 8px rgba(16,185,129,0.8)',
     in_array($normalized, ['pending','waiting','on_hold','draft','new','scheduled','queued']) => 'background:#FFB454;box-shadow:0 0 8px rgba(255,180,84,0.8)',
     in_array($normalized, ['in_progress','processing','sent','planning','review','partial','in_review','open']) => 'background:#4DA3FF;box-shadow:0 0 8px rgba(77,163,255,0.8)',
     in_array($normalized, ['high','urgent','critical','overdue','failed','blocked','error']) => 'background:#FF5C5C;box-shadow:0 0 8px rgba(255,92,92,0.8)',
@@ -29,17 +29,17 @@ $dot = match(true) {
     in_array($normalized, ['low','minor','info']) => 'background:#4DA3FF;box-shadow:0 0 8px rgba(77,163,255,0.8)',
     in_array($normalized, ['rejected','revoked','cancelled','suspended','inactive','closed','disabled','expired']) => 'background:#FF5C5C;box-shadow:none',
     in_array($normalized, ['resubmission_required','submitted']) => 'background:#FFB454;box-shadow:0 0 8px rgba(255,180,84,0.8)',
-    default => 'background:#8ba595;box-shadow:none',
+    default => 'background:#8FA5C8;box-shadow:none',
 };
 
 $text = match(true) {
-    in_array($normalized, ['active','paid','completed','approved','accepted','verified','resolved','enabled','online','success','successful']) => 'color:#5CEFA8;border-color:rgba(0,230,122,0.35);background:rgba(0,230,122,0.07)',
+    in_array($normalized, ['active','paid','completed','approved','accepted','verified','resolved','enabled','online','success','successful']) => 'color:#34D399;border-color:rgba(16,185,129,0.35);background:rgba(16,185,129,0.07)',
     in_array($normalized, ['pending','waiting','on_hold','draft','new','scheduled','queued']) => 'color:#FFB454;border-color:rgba(255,180,84,0.35);background:rgba(255,180,84,0.07)',
     in_array($normalized, ['in_progress','processing','sent','planning','review','partial','in_review','open']) => 'color:#4DA3FF;border-color:rgba(77,163,255,0.35);background:rgba(77,163,255,0.07)',
     in_array($normalized, ['high','urgent','critical','overdue','failed','blocked','error']) => 'color:#FF8A8A;border-color:rgba(255,92,92,0.4);background:rgba(255,92,92,0.07)',
     in_array($normalized, ['medium','moderate']) => 'color:#FFB454;border-color:rgba(255,180,84,0.35);background:rgba(255,180,84,0.07)',
     in_array($normalized, ['low','minor','info']) => 'color:#4DA3FF;border-color:rgba(77,163,255,0.35);background:rgba(77,163,255,0.07)',
-    default => 'color:#8ba595;border-color:rgba(139,165,149,0.3);background:rgba(139,165,149,0.06)',
+    default => 'color:#8FA5C8;border-color:rgba(143,165,200,0.3);background:rgba(143,165,200,0.06)',
 };
 @endphp
 

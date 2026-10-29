@@ -9,9 +9,8 @@ use App\Models\Country;
  * through here so decimal places, symbols, and code prefixes always follow
  * the currency catalog — never hard-coded assumptions.
  *
- * Storage note: money columns are decimal(12,2); display precision beyond
- * 2dp (KWD/BHD/OMR/JOD = 3) is presentation-level. Sub-fils precision is
- * rounded at storage — see docs.
+ * Supported customer-facing currencies: BDT, GBP, USD (all 2dp).
+ * Historical records may contain other codes; they are preserved read-only.
  */
 class Money
 {
@@ -23,7 +22,7 @@ class Money
         if (empty(self::$catalog)) {
             foreach (Country::get(['currency_code', 'currency_symbol', 'currency_name', 'decimal_places', 'is_active']) as $c) {
                 $code = strtoupper($c->currency_code);
-                // First active row wins for shared codes (e.g. EUR).
+                // First active row wins for shared codes (e.g. USD).
                 if (! isset(self::$catalog[$code]) || ($c->is_active && ! self::$catalog[$code]['active'])) {
                     self::$catalog[$code] = [
                         'symbol' => $c->currency_symbol,
@@ -69,7 +68,7 @@ class Money
     }
 
     /**
-     * "AED 1,500.00" / "KWD 500.000" — symbol + grouped decimals.
+     * "$1,500.00" / "£1,500.00" / "৳1,500.00" — symbol + grouped decimals.
      */
     public static function format(float $amount, string $currency): string
     {
@@ -80,7 +79,7 @@ class Money
 
     /**
      * Code-prefixed variant for PDF/ASCII-safe contexts.
-     * "AED 1,500.00".
+     * "USD 1,500.00".
      */
     public static function formatCode(float $amount, string $currency): string
     {

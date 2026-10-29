@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#050807">
+    <meta name="theme-color" content="#071A38">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Create Account — PerfectITSecurity</title>
-    <meta name="description" content="Create your PerfectITSecurity client account.">
+    <title>Create Account | AI Security Services</title>
+    <meta name="description" content="Create your AI Security Services client account.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -22,7 +22,7 @@
         })();
     </script>
 </head>
-<body class="bg-black text-white min-h-screen flex items-center justify-center p-4 sm:p-6 relative dark:bg-black dark:text-white" data-lights="auth">
+<body class="bg-[#071A38] text-white min-h-screen flex items-center justify-center p-4 sm:p-6 relative dark:bg-[#071A38] dark:text-white" data-lights="auth">
     <a href="#register-form" class="skip-link">Skip to registration form</a>
 
     {{-- Terminal environment (one fixed CSS layer; zero JS) --}}
@@ -33,7 +33,7 @@
     <div class="relative z-10 w-full max-w-lg py-8">
         {{-- Top breadcrumb --}}
         <div class="flex items-center justify-between mb-4 font-mono text-[11px] tracking-[0.18em] uppercase">
-            <a href="{{ route('home') }}" class="text-gray-500 hover:text-emerald-700 dark:hover:text-[#00FF00] transition-colors">← SYSTEM://HOME</a>
+            <a href="{{ route('home') }}" class="text-gray-500 hover:text-[#1E63D6] dark:hover:text-[#36D9FF] transition-colors">← SYSTEM://HOME</a>
             <span class="flex items-center gap-2">
                 <span class="term-status"><span class="term-status-dot"></span>ONLINE</span>
                 <button type="button" onclick="window.Alpine && Alpine.store('theme').toggle()" class="p-1.5 text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors" aria-label="Toggle color theme" title="Toggle color theme">
@@ -49,16 +49,16 @@
 
             {{-- Brand --}}
             <div class="flex items-center gap-2.5 mb-7">
-                <div class="w-9 h-9 border border-[#00FF00]/50 bg-[#00FF00]/10 flex items-center justify-center relative" aria-hidden="true">
-                    <span class="absolute -top-px -left-px w-2 h-2 border-t border-l border-[#00FF00]"></span>
-                    <span class="absolute -bottom-px -right-px w-2 h-2 border-b border-r border-[#00FF00]"></span>
-                    <svg class="w-5 h-5 text-[#00FF00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <div class="w-9 h-9 border border-[#36D9FF]/50 bg-[#36D9FF]/10 flex items-center justify-center relative" aria-hidden="true">
+                    <span class="absolute -top-px -left-px w-2 h-2 border-t border-l border-[#36D9FF]"></span>
+                    <span class="absolute -bottom-px -right-px w-2 h-2 border-b border-r border-[#36D9FF]"></span>
+                    <svg class="w-5 h-5 text-[#36D9FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z"/>
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9.2 12l1.9 1.9L15 10"/>
                     </svg>
                 </div>
                 <div class="leading-none">
-                    <span class="block font-display font-extrabold text-[14px] tracking-tight text-white">PERFECT<span class="text-[#00FF00]">IT</span>SECURITY</span>
+                    <span class="block font-display font-extrabold text-[14px] tracking-tight text-white">AI<span class="text-[#36D9FF]"> SECURITY </span>SERVICES</span>
                     <span class="block font-mono text-[8px] tracking-[0.32em] text-gray-500 uppercase mt-1">AUTH://ENROLL</span>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                         <option value="{{ $option['name'] }}" data-description="{{ $option['description'] }}" data-approval="{{ $option['approval_required'] && !$option['self_registration'] ? '1' : '0' }}" {{ old('role') === $option['name'] ? 'selected' : '' }}>{{ $option['display_name'] }}</option>
                         @endforeach
                     </select>
-                    <p id="role-description" class="term-hint">Choose the account type that matches how you will use PerfectITSecurity.</p>
+                    <p id="role-description" class="term-hint">Choose the account type that matches how you will use AI Security Services.</p>
                     <p id="role-approval-note" class="term-hint !text-amber-700 dark:!text-amber-400" style="display:none;">This role requires administrative approval. {{ $isProduction ? 'Your account will start with customer access while your request is reviewed.' : 'Test environment: the role is granted immediately for testing.' }}</p>
                 </div>
 
@@ -128,7 +128,7 @@
 
             <div class="mt-7 pt-5 border-t border-term-300 text-center">
                 <p class="font-mono text-[11px] tracking-[0.14em] text-gray-500 uppercase">
-                    REGISTERED? <a href="{{ route('login') }}" class="text-emerald-700 hover:text-emerald-900 dark:text-[#00FF00] dark:hover:text-white transition-colors">SIGN IN →</a>
+                    REGISTERED? <a href="{{ route('login') }}" class="text-[#1E63D6] hover:text-[#15459E] dark:text-[#36D9FF] dark:hover:text-white transition-colors">SIGN IN →</a>
                 </p>
             </div>
         </div>
@@ -154,3 +154,4 @@
     </script>
 </body>
 </html>
+

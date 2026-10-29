@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('page-title', 'Service Categories')
 
 @section('content')
@@ -10,7 +10,7 @@
         @forelse($categories as $category)
         <div class="term-panel p-5">
             <div class="flex items-center gap-2.5 mb-2">
-                <span class="w-2.5 h-2.5 flex-shrink-0" style="background-color: {{ $category->color ?? '#00E67A' }}" aria-hidden="true"></span>
+                <span class="w-2.5 h-2.5 flex-shrink-0" style="background-color: {{ $category->color ?? '#36D9FF' }}" aria-hidden="true"></span>
                 <h3 class="font-display font-bold text-slate-900 dark:text-white tracking-tight">{{ $category->name }}</h3>
             </div>
             @if($category->description)
@@ -115,3 +115,4 @@
     @endif
 </div>
 @endsection
+

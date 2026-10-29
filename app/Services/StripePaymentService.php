@@ -27,7 +27,7 @@ class StripePaymentService
      * invoices stay on manual/bank-transfer rails. Never add a code here
      * without verifying provider support first.
      */
-    public const STRIPE_SUPPORTED = ['AED', 'SAR', 'QAR', 'KWD', 'BHD', 'OMR', 'JOD', 'EUR', 'GBP', 'USD'];
+    public const STRIPE_SUPPORTED = ['GBP', 'USD'];
 
     public static function supportsCurrency(string $code): bool
     {

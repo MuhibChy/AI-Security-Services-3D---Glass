@@ -73,8 +73,10 @@ class LightThemeTest extends TestCase
     public function dark_identity_and_islands_are_preserved()
     {
         $css = $this->css();
-        $this->assertStringContainsString('--term-bg: #000000', $css);
-        $this->assertStringContainsString('--term-accent: #00E67A', $css);
+        // Solid-Color 3D Technology art direction (2026-10 refresh): deep navy
+        // foundation + electric cyan accent. Dark islands/overrides below.
+        $this->assertStringContainsString('--term-bg: #071426', $css);
+        $this->assertStringContainsString('--term-accent: #27D9F2', $css);
         $this->assertStringContainsString('html.dark .shell-link', $css);
         $this->assertStringContainsString('html:not(.dark) .dark-island', $css);
         $this->assertStringContainsString('background-color: #000000', $css);

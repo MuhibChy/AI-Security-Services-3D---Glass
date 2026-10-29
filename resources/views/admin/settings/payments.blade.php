@@ -59,7 +59,7 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium mb-1 text-slate-800 dark:text-slate-200">Supported Currencies</label>
-                    <input type="text" name="payments_supported_currencies" value="{{ $settings['payments_supported_currencies'] ?? 'BDT,GBP,USD,EUR' }}" class="term-input w-full font-mono uppercase" placeholder="BDT,GBP,USD,EUR">
+                    <input type="text" name="payments_supported_currencies" value="{{ $settings['payments_supported_currencies'] ?? 'BDT,GBP,USD' }}" class="term-input w-full font-mono uppercase" placeholder="BDT,GBP,USD">
                     <p class="text-xs text-slate-500 mt-1">Comma-separated ISO codes supported by the platform.</p>
                 </div>
                 <div>
@@ -122,7 +122,7 @@
         <div class="term-panel p-6">
             <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-200 dark:border-white/10">
                 <span class="font-mono text-xs text-accent-soft font-bold uppercase tracking-wider">03 // INTERNATIONAL PAYMENT SYSTEM</span>
-                <span class="text-xs text-slate-500">Multi-Provider (GBP, USD, EUR)</span>
+                <span class="text-xs text-slate-500">Multi-Provider (GBP, USD)</span>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 @php
@@ -145,7 +145,7 @@
                             <p class="text-xs text-slate-500 mb-3">{{ $info['desc'] }}</p>
                         </div>
                         <div class="pt-2 border-t border-slate-200 dark:border-white/5 flex items-center justify-between text-xs">
-                            <span class="font-mono text-slate-400">GBP · USD · EUR</span>
+                            <span class="font-mono text-slate-400">GBP · USD</span>
                             @if($prov)
                             <a href="{{ route('admin.payment-providers.edit', $prov) }}" class="link-arrow font-medium text-primary-600 dark:text-accent-soft">Configure &rarr;</a>
                             @endif

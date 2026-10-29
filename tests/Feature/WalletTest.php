@@ -153,7 +153,7 @@ class WalletTest extends TestCase
         $wallet = $this->service()->for($customer, 'USD');
         $this->service()->creditDeposit($wallet, 500, 'test', 'txn-1', 'evt-1', $customer->id);
         $invoice = $this->invoice($customer, 100);
-        $invoice->update(['currency' => 'EUR']);
+        $invoice->update(['currency' => 'GBP']);
 
         $this->expectException(\RuntimeException::class);
         $this->service()->payInvoice($wallet->fresh(), $invoice, 100, $customer->id);

@@ -28,8 +28,8 @@ class TrainingCenterLessons
         return [
             [
                 'slug' => 'platform-overview', 'category' => 'getting-started', 'title' => 'Platform Overview',
-                'summary' => 'What PerfectITSecurity does and how work flows from visitor to follow-up.',
-                'what' => 'PerfectITSecurity provides IT support, cybersecurity, web development, software services, digital marketing, server management and consulting through one website that connects visitors, customers, staff work and company money.',
+                'summary' => 'What AI Security Services does and how work flows from visitor to follow-up.',
+                'what' => 'AI Security Services provides IT support, cybersecurity, web development, software services, digital marketing, server management and consulting through one website that connects visitors, customers, staff work and company money.',
                 'why' => 'Every action you take sits inside one lifecycle. Acting out of order (work before payment terms, orders before acceptance) breaks finance and delivery.',
                 'who' => 'Every employee, on day one.',
                 'when' => 'Before touching any record. Revisit whenever you are unsure what comes next.',

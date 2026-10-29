@@ -16,6 +16,14 @@ class SecurityHeaders
         $response->headers->set('Referrer-Policy', 'strict-origin-when-cross-origin');
         $response->headers->set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
         $response->headers->set('Cross-Origin-Opener-Policy', 'same-origin');
+
+        // Do not advertise the PHP build. expose_php is a php.ini setting we cannot
+        // portably change from application code, but the header it emits is ours to
+        // remove. Version disclosure only helps an attacker pick a matching exploit.
+        $response->headers->remove('X-Powered-By');
+        if (function_exists('header_remove')) {
+            @header_remove('X-Powered-By');
+        }
         // NOTE: script-src keeps 'unsafe-inline' (Blade inline scripts + Alpine.js)
         // and 'unsafe-eval' (Alpine.js expression evaluation). Removing either
         // breaks the existing frontend; re-evaluate only after migrating to

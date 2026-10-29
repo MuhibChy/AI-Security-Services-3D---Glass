@@ -50,6 +50,11 @@ class PaymentRefundController extends Controller
 
     public function approve(PaymentRefund $refund, PaymentRefundService $service)
     {
+        // Authorization check: only finance managers and admins can approve refunds
+        if (!auth()->user()->isFinanceManager() && !auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $service->approve($refund, auth()->id());
 
         return back()->with('success', 'Refund approved. Execute it to move money.');
@@ -57,6 +62,11 @@ class PaymentRefundController extends Controller
 
     public function reject(Request $request, PaymentRefund $refund, PaymentRefundService $service)
     {
+        // Authorization check: only finance managers and admins can reject refunds
+        if (!auth()->user()->isFinanceManager() && !auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $data = $request->validate(['reason' => 'required|string|min:5|max:1000']);
         $service->reject($refund, auth()->id(), $data['reason']);
 
@@ -65,6 +75,11 @@ class PaymentRefundController extends Controller
 
     public function execute(PaymentRefund $refund, PaymentRefundService $service)
     {
+        // Authorization check: only finance managers and admins can execute refunds
+        if (!auth()->user()->isFinanceManager() && !auth()->user()->isAdmin()) {
+            abort(403, 'Unauthorized action.');
+        }
+
         $service->execute($refund, auth()->id());
 
         return redirect()->route('admin.refunds.show', $refund)->with('success', 'Refund executed and ledger updated.');

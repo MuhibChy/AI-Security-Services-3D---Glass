@@ -20,7 +20,7 @@
 <body>
     <div class="header">
         <table style="width:100%;"><tr>
-            <td><div class="logo">PerfectITSecurity</div><div style="color:#64748b;">Enterprise IT Infrastructure & Cybersecurity</div></td>
+            <td><div class="logo">AI Security Services</div><div style="color:#64748b;">Enterprise IT Infrastructure & Cybersecurity</div></td>
             <td style="text-align:right;"><div class="doc-title">SERVICE ORDER</div><div style="font-weight:600;">#{{ $order->order_number }}</div><div>Order Date: {{ $order->created_at->format('d M Y') }}</div><div>Status: {{ strtoupper($order->status) }}</div></td>
         </tr></table>
     </div>
@@ -42,6 +42,6 @@
         <tr class="grand-total"><td>Remaining Due</td><td style="text-align:right;">{{ number_format((float) $order->amount_due, 2) }}</td></tr>
     </table>
     <p>Payment Terms: advance as agreed · Currency {{ $order->currency }} · Price locked: {{ $order->price_locked ? 'Yes' : 'No' }}</p>
-    <div class="footer">Generated {{ now()->format('d M Y H:i') }} · PerfectITSecurity · This document references order {{ $order->order_number }}.</div>
+    <div class="footer">Generated {{ now()->format('d M Y H:i') }} · AI Security Services · This document references order {{ $order->order_number }}.</div>
 </body>
 </html>

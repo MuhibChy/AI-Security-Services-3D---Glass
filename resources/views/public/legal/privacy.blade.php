@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Privacy Policy — PerfectITSecurity')
-@section('description', 'Learn how PerfectITSecurity collects, uses, protects, and handles your personal information and corporate data.')
+@section('title', 'Privacy Policy | AI Security Services')
+@section('description', 'Learn how AI Security Services collects, uses, protects, and handles your personal information and corporate data.')
 
 @section('content')
 
@@ -16,7 +16,7 @@
             </div>
             <h1 id="privacy-hero-heading" class="font-display font-extrabold tracking-tight leading-[1.02] text-4xl sm:text-6xl text-navy-900 dark:text-white text-balance">PRIVACY POLICY</h1>
             <p class="mt-6 text-base sm:text-lg leading-relaxed text-slate-600 dark:text-term-800">
-                At PerfectITSecurity, safeguarding your personal data and institutional assets is fundamental to our security practices. This policy details how we treat information gathered across our services.
+                At AI Security Services, safeguarding your personal data and institutional assets is fundamental to our security practices. This policy details how we treat information gathered across our services.
             </p>
             <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[11px] tracking-wider text-term-700">
                 <span>LAST-REVISED:// SEPTEMBER 2026</span>

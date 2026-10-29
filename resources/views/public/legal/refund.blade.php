@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Refund Policy — PerfectITSecurity')
-@section('description', 'PerfectITSecurity refund policy for IT services, subscriptions, and professional services.')
+@section('title', 'Refund Policy | AI Security Services')
+@section('description', 'AI Security Services refund policy for IT services, subscriptions, and professional services.')
 
 @section('content')
 
@@ -26,7 +26,7 @@
                     <div class="term-sec-label mb-2">SECTION://01</div>
                     <h2 class="font-display text-xl font-bold text-navy-900 dark:text-white mb-3">Overview</h2>
                     <p class="text-sm leading-relaxed">
-                        At PerfectITSecurity, we are committed to delivering high-quality IT services. This Refund Policy outlines the terms under which refunds may be requested for our services, subscriptions, and professional engagements.
+                        At AI Security Services, we are committed to delivering high-quality IT services. This Refund Policy outlines the terms under which refunds may be requested for our services, subscriptions, and professional engagements.
                     </p>
                 </div>
 
@@ -102,7 +102,7 @@
                         For any questions about this Refund Policy, please contact us at:<br>
                         <strong class="text-navy-900 dark:text-white">Email:</strong> billing@techsupport.com<br>
                         <strong class="text-navy-900 dark:text-white">Phone:</strong> +1 (555) 123-4567<br>
-                        <strong class="text-navy-900 dark:text-white">Address:</strong> PerfectITSecurity, 123 Tech Avenue, San Francisco, CA 94105, USA
+                        <strong class="text-navy-900 dark:text-white">Address:</strong> AI Security Services, 123 Tech Avenue, San Francisco, CA 94105, USA
                     </p>
                 </div>
 

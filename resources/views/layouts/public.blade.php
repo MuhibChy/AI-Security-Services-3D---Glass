@@ -4,21 +4,21 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="theme-color" content="#050807">
+    <meta name="theme-color" content="#071A38">
 
-    <title>@yield('title', 'PerfectITSecurity — Cybersecurity & IT Engineering') </title>
+    <title>@yield('title', 'AI Security Services — Cybersecurity & IT Engineering') </title>
     <meta name="description" content="@yield('description', 'Managed IT support, cybersecurity, penetration testing, secure software development, and cloud/server management. Security operations active 24/7.')">
     <meta name="keywords" content="@yield('keywords', 'IT support, cybersecurity, penetration testing, managed IT, cloud services, secure software development')">
     <meta name="robots" content="index, follow">
 
     {{-- Open Graph --}}
-    <meta property="og:title" content="@yield('title', 'PerfectITSecurity — Cybersecurity & IT Engineering')">
+    <meta property="og:title" content="@yield('title', 'AI Security Services — Cybersecurity & IT Engineering')">
     <meta property="og:description" content="@yield('description', 'Managed IT support, cybersecurity and secure engineering. Security operations active 24/7.')">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="{{ asset('favicon.ico') }}">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="@yield('title', 'PerfectITSecurity — Cybersecurity & IT Engineering')">
+    <meta name="twitter:title" content="@yield('title', 'AI Security Services — Cybersecurity & IT Engineering')">
     <meta name="twitter:description" content="@yield('description', 'Managed IT support, cybersecurity and secure engineering. Security operations active 24/7.')">
     <link rel="canonical" href="{{ url()->current() }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
@@ -48,7 +48,7 @@
         })();
     </script>
 </head>
-<body class="bg-black text-white min-h-screen flex flex-col relative overflow-x-hidden selection:bg-[#00FF00]/25 selection:text-[#00FF00] font-sans antialiased dark:bg-black dark:text-white"
+<body class="bg-[#071A38] text-white min-h-screen flex flex-col relative overflow-x-hidden selection:bg-[#287BFF]/30 selection:text-[#36D9FF] font-sans antialiased dark:bg-[#071A38] dark:text-white"
       x-data="{ mobileOpen: false }"
       data-lights="{{ request()->routeIs('home') ? 'home' : 'public' }}"
       data-glove-mode="moving"
@@ -66,30 +66,28 @@
     <x-global-hud-frame />
 
     {{-- ═══════════════════════════════════════════════════════════
-         NAVIGATION — Terminal Chrome (Solid Color Design)
+         NAVIGATION — Solid-Color 3D Technology Chrome
          ═══════════════════════════════════════════════════════════ --}}
-    <nav class="dark-island h-14 w-full bg-black border-b border-[#00FF00]/30 relative z-[1000] overflow-visible" id="main-nav"
+    <nav class="dark-island fixed top-0 left-0 right-0 h-16 w-full bg-[#071A38]/95 backdrop-blur-md border-b border-[#36D9FF]/20 z-[9999] overflow-visible shadow-lg shadow-[#071A38]/50" id="main-nav"
          aria-label="Primary">
 
         <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
-            <div class="flex items-center justify-between h-14 gap-4">
+            <div class="flex items-center justify-between h-16 gap-4">
 
                 {{-- Logo --}}
-                <a href="{{ route('home') }}" class="flex items-center gap-2.5 group flex-shrink-0" aria-label="PerfectITSecurity — home">
-                    <div class="w-8 h-8 border border-[#00FF00]/50 bg-[#00FF00]/10 flex items-center justify-center relative" aria-hidden="true">
-                        <span class="absolute -top-px -left-px w-2 h-2 border-t border-l border-[#00FF00]"></span>
-                        <span class="absolute -bottom-px -right-px w-2 h-2 border-b border-r border-[#00FF00]"></span>
-                        <svg class="w-[18px] h-[18px] text-[#00FF00]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                <a href="{{ route('home') }}" class="flex items-center gap-2.5 group flex-shrink-0" aria-label="AI Security Services — home">
+                    <div class="w-9 h-9 rounded-lg border border-[#36D9FF]/50 bg-[#287BFF]/20 flex items-center justify-center relative shadow-sm shadow-[#287BFF]/40 transition-transform group-hover:scale-105" aria-hidden="true">
+                        <svg class="w-5 h-5 text-[#36D9FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z"/>
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.2 12l1.9 1.9L15 10"/>
                         </svg>
                     </div>
                     <div class="leading-none hidden sm:block">
-                        <span class="block font-display font-extrabold text-[14px] tracking-tight text-white">
-                            PERFECT<span class="text-[#00FF00]">IT</span>SECURITY
+                        <span class="block font-display font-extrabold text-[15px] tracking-tight text-white">
+                            AI<span class="text-[#36D9FF]"> SECURITY </span>SERVICES
                         </span>
-                        <span class="block font-mono text-[8px] tracking-[0.32em] text-gray-400 uppercase mt-1">
-                            Secure // Build // Operate
+                        <span class="block font-mono text-[8px] tracking-[0.32em] text-[#C9D4E5] uppercase mt-1">
+                            Enterprise IT // Cybersecurity
                         </span>
                     </div>
                 </a>
@@ -101,10 +99,10 @@
                     <div x-data="{ open: false }" @click.away="open = false" @keydown.escape.window="open = false" class="relative">
                         <button @click="open = !open" @keydown.escape.window="open = false"
                                 :aria-expanded="open.toString()"
-                                class="header-nav-item flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors"
+                                class="header-nav-item flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors"
                                 aria-haspopup="true">
                             <span @if(request()->routeIs('services.*')) aria-current="page" @endif>Services</span>
-                            <svg class="w-3 h-3 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            <svg class="w-3 h-3 transition-transform duration-200 text-[#36D9FF]" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                         </button>
                         <div x-show="open"
                              x-transition:enter="transition ease-out duration-150"
@@ -112,29 +110,32 @@
                              x-transition:enter-end="opacity-100 translate-y-0"
                              x-transition:leave="transition ease-in duration-100"
                              x-transition:leave-end="opacity-0 -translate-y-1"
-                             class="absolute top-full left-0 mt-2 w-64 bg-black border border-[#00FF00]/30 p-2 z-50"
+                             class="absolute top-full left-0 mt-2 w-64 bg-[#071A38] border border-[#36D9FF]/30 rounded-lg shadow-2xl p-2 z-50 backdrop-blur-md"
                              style="display: none;">
-                            <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-gray-400 px-2.5 pt-1.5 pb-2">01 / Services</div>
-                            <a href="{{ route('services.index') }}" class="flex items-center justify-between px-2.5 py-2 text-sm font-semibold text-white hover:bg-[#00FF00]/10 hover:text-[#00FF00] transition-colors rounded-sm">
+                            <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9D4E5] px-2.5 pt-1.5 pb-2">01 / Services</div>
+                            <a href="{{ route('services.index') }}" class="flex items-center justify-between px-2.5 py-2 text-sm font-semibold text-white hover:bg-[#287BFF]/20 hover:text-[#36D9FF] transition-colors rounded-md">
                                 All Services
-                                <svg class="w-3.5 h-3.5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                                <svg class="w-3.5 h-3.5 text-[#36D9FF]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                             </a>
-                            <div class="h-px bg-gray-800 my-1.5"></div>
+                            <div class="h-px bg-[#0B2A55] my-1.5"></div>
                             @foreach(\App\Models\ServiceCategory::where('is_active', true)->orderBy('sort_order')->take(9)->get() as $category)
                             <a href="{{ route('services.index') }}?category={{ $category->slug }}"
-                               class="flex items-center gap-2.5 px-2.5 py-1.5 text-sm text-gray-300 hover:bg-[#00FF00]/10 hover:text-white transition-colors rounded-sm">
-                                <span class="w-1.5 h-1.5 bg-gray-600 flex-shrink-0" aria-hidden="true"></span>
+                               class="flex items-center gap-2.5 px-2.5 py-1.5 text-sm text-[#C9D4E5] hover:bg-[#287BFF]/20 hover:text-white transition-colors rounded-md">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#36D9FF] flex-shrink-0" aria-hidden="true"></span>
                                 <span class="truncate">{{ $category->name }}</span>
                             </a>
                             @endforeach
                         </div>
                     </div>
 
+                    {{-- Skills & Capabilities --}}
+                    <a href="{{ route('skills') }}" @if(request()->routeIs('skills')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">Skills</a>
+
                     {{-- Solutions --}}
                     <div x-data="{ open: false }" @click.away="open = false" class="relative">
-                        <button @click="open = !open" :aria-expanded="open.toString()" class="header-nav-item flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors" aria-haspopup="true">
+                        <button @click="open = !open" :aria-expanded="open.toString()" class="header-nav-item flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors" aria-haspopup="true">
                             <span @if(request()->routeIs('case-studies*','portfolio.*','pricing','get-quote','industries')) aria-current="page" @endif>Solutions</span>
-                            <svg class="w-3 h-3 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                            <svg class="w-3 h-3 transition-transform duration-200 text-[#36D9FF]" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
                         </button>
                         <div x-show="open"
                              x-transition:enter="transition ease-out duration-150"
@@ -142,9 +143,9 @@
                              x-transition:enter-end="opacity-100 translate-y-0"
                              x-transition:leave="transition ease-in duration-100"
                              x-transition:leave-end="opacity-0 -translate-y-1"
-                             class="absolute top-full left-0 mt-2 w-60 bg-black border border-[#00FF00]/30 p-2 z-50"
+                             class="absolute top-full left-0 mt-2 w-60 bg-[#071A38] border border-[#36D9FF]/30 rounded-lg shadow-2xl p-2 z-50 backdrop-blur-md"
                              style="display: none;">
-                            <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-gray-400 px-2.5 pt-1.5 pb-2">02 / Solutions</div>
+                            <div class="font-mono text-[10px] uppercase tracking-[0.2em] text-[#C9D4E5] px-2.5 pt-1.5 pb-2">02 / Solutions</div>
                             @foreach([
                                 ['label' => 'Case Studies', 'url' => route('case-studies')],
                                 ['label' => 'Portfolio', 'url' => route('portfolio.index')],
@@ -152,28 +153,34 @@
                                 ['label' => 'Get a Quote', 'url' => route('get-quote')],
                                 ['label' => 'Industries', 'url' => route('industries')],
                             ] as $item)
-                            <a href="{{ $item['url'] }}" class="block px-2.5 py-2 text-sm text-gray-300 hover:bg-[#00FF00]/10 hover:text-white transition-colors rounded-sm">{{ $item['label'] }}</a>
+                            <a href="{{ $item['url'] }}" class="block px-2.5 py-2 text-sm text-[#C9D4E5] hover:bg-[#287BFF]/20 hover:text-[#36D9FF] transition-colors rounded-md">{{ $item['label'] }}</a>
                             @endforeach
                         </div>
                     </div>
 
-                    {{-- Security (home section anchor) --}}
-                    <a href="{{ request()->routeIs('home') ? '#security' : route('home') . '#security' }}" class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">Security</a>
+                    {{-- Security (home section anchor; hidden on tight desktop widths) --}}
+                    <a href="{{ request()->routeIs('home') ? '#security' : route('home') . '#security' }}" @if(request()->routeIs('home')) aria-current="page" @endif class="anchor-nav-item header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">Security</a>
 
-                    {{-- IT Support (home section anchor) --}}
-                    <a href="{{ request()->routeIs('home') ? '#it-support' : route('home') . '#it-support' }}" class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">IT Support</a>
-
-                    {{-- Portfolio --}}
-                    <a href="{{ route('portfolio.index') }}" @if(request()->routeIs('portfolio.*')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">Portfolio</a>
+                    {{-- IT Support (home section anchor; hidden on tight desktop widths) --}}
+                    <a href="{{ request()->routeIs('home') ? '#it-support' : route('home') . '#it-support' }}" @if(request()->routeIs('home')) aria-current="page" @endif class="anchor-nav-item header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">IT Support</a>
 
                     {{-- Knowledge Base --}}
-                    <a href="{{ route('kb.index') }}" @if(request()->routeIs('kb.*')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">Knowledge Base</a>
+                    <a href="{{ route('kb.index') }}" @if(request()->routeIs('kb.*')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">Knowledge Base</a>
+
+                    {{-- Knowledge Hub --}}
+                    <a href="{{ route('knowledge-hub.index') }}" @if(request()->routeIs('knowledge-hub.*')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-[#36D9FF] hover:text-white transition-colors flex items-center gap-1.5">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#36D9FF] animate-pulse" aria-hidden="true"></span>
+                        Knowledge Hub
+                    </a>
+
+                    {{-- Team --}}
+                    <a href="{{ route('team') }}" @if(request()->routeIs('team')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">Team</a>
 
                     {{-- About --}}
-                    <a href="{{ route('about') }}" @if(request()->routeIs('about')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">About</a>
+                    <a href="{{ route('about') }}" @if(request()->routeIs('about')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">About</a>
 
                     {{-- Contact --}}
-                    <a href="{{ route('contact') }}" @if(request()->routeIs('contact*')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">Contact</a>
+                    <a href="{{ route('contact') }}" @if(request()->routeIs('contact*')) aria-current="page" @endif class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">Contact</a>
                 </div>
 
                 {{-- Right Side Actions --}}
@@ -184,27 +191,27 @@
                     <x-currency-switcher />
                     <button id="theme-toggle"
                             onclick="window.Alpine && Alpine.store('theme').toggle()"
-                            class="p-2 text-gray-400 hover:text-white hover:bg-[#00FF00]/10 transition-colors rounded-sm"
+                            class="p-2 text-gray-400 hover:text-white hover:bg-[#287BFF]/20 transition-colors rounded-md"
                             title="Toggle dark mode" aria-label="Toggle dark mode">
                         <svg class="w-[18px] h-[18px] dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                         <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
                     </button>
 
-                    <span class="w-px h-5 bg-gray-700" aria-hidden="true"></span>
+                    <span class="w-px h-5 bg-[#0B2A55]" aria-hidden="true"></span>
 
                     {{-- Portal / Auth --}}
                     @auth
                         @if(auth()->user()->isCustomer())
-                            <a href="{{ route('portal.dashboard') }}" class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">My Portal</a>
+                            <a href="{{ route('portal.dashboard') }}" class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">My Portal</a>
                         @else
-                            <a href="{{ route('admin.dashboard') }}" class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">Operations</a>
+                            <a href="{{ route('admin.dashboard') }}" class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">Operations</a>
                         @endif
                     @else
-                        <a href="{{ route('login') }}" class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#00FF00] transition-colors">Client Portal</a>
+                        <a href="{{ route('login') }}" class="header-nav-item px-3 py-2 text-sm font-medium text-white hover:text-[#36D9FF] transition-colors">Client Portal</a>
                     @endauth
 
                     {{-- Primary CTA --}}
-                    <a href="{{ route('get-quote') }}" class="header-cta inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-black bg-[#00FF00] hover:bg-[#00CC00] transition-colors rounded-sm flex-shrink-0">
+                    <a href="{{ route('get-quote') }}" class="header-cta inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-[#287BFF] hover:bg-[#1D4ED8] border border-[#36D9FF]/40 shadow-md shadow-[#287BFF]/30 rounded-md transition-all flex-shrink-0">
                         Get Started
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                     </a>
@@ -214,7 +221,7 @@
                 <div class="xl:hidden flex items-center gap-1">
                     <button id="mobile-theme-toggle"
                             onclick="window.Alpine && Alpine.store('theme').toggle()"
-                            class="p-2 text-gray-400 hover:text-white hover:bg-[#00FF00]/10 transition-colors"
+                            class="p-2 text-gray-400 hover:text-white hover:bg-[#287BFF]/20 transition-colors rounded-md"
                             aria-label="Toggle dark mode">
                         <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
                         <svg class="w-5 h-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
@@ -223,7 +230,7 @@
                             @keydown.escape.window="mobileOpen = false"
                             :aria-expanded="mobileOpen.toString()"
                             aria-controls="mobile-menu"
-                            class="p-2 text-gray-400 hover:text-white hover:bg-[#00FF00]/10 transition-colors"
+                            class="p-2 text-gray-400 hover:text-white hover:bg-[#287BFF]/20 transition-colors rounded-md"
                             aria-label="Toggle menu">
                         <svg x-show="!mobileOpen" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
                         <svg x-show="mobileOpen" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -238,24 +245,26 @@
                  x-transition:enter-end="opacity-100 translate-y-0"
                  x-transition:leave="transition ease-in duration-150"
                  x-transition:leave-end="opacity-0 -translate-y-1"
-                 class="xl:hidden pb-6 border-t border-gray-700 mt-2 max-h-[calc(100dvh-3.5rem)] overflow-y-auto bg-black">
+                 class="xl:hidden pb-6 border-t border-[#0B2A55] mt-2 max-h-[calc(100dvh-3.5rem)] overflow-y-auto bg-[#071A38] backdrop-blur-lg">
                 <div class="pt-4 grid gap-0.5">
                     @php
                         $mobileLinks = [
                             ['label' => 'Services', 'url' => route('services.index'), 'active' => request()->routeIs('services.*')],
+                            ['label' => 'Skills & Capabilities', 'url' => route('skills'), 'active' => request()->routeIs('skills')],
                             ['label' => 'Solutions', 'url' => route('case-studies'), 'active' => request()->routeIs('case-studies*')],
                             ['label' => 'Security', 'url' => request()->routeIs('home') ? '#security' : route('home') . '#security', 'active' => false],
                             ['label' => 'IT Support', 'url' => request()->routeIs('home') ? '#it-support' : route('home') . '#it-support', 'active' => false],
-                            ['label' => 'Portfolio', 'url' => route('portfolio.index'), 'active' => request()->routeIs('portfolio.*')],
                             ['label' => 'Knowledge Base', 'url' => route('kb.index'), 'active' => request()->routeIs('kb.*')],
+                            ['label' => 'Knowledge Hub (100+ Resources)', 'url' => route('knowledge-hub.index'), 'active' => request()->routeIs('knowledge-hub.*')],
+                            ['label' => 'Team', 'url' => route('team'), 'active' => request()->routeIs('team')],
                             ['label' => 'About', 'url' => route('about'), 'active' => request()->routeIs('about')],
                             ['label' => 'Contact', 'url' => route('contact'), 'active' => request()->routeIs('contact*')],
                         ];
                     @endphp
                     @foreach($mobileLinks as $i => $link)
-                    <a href="{{ $link['url'] }}" class="flex items-center justify-between px-4 py-3 border-b border-gray-800 text-sm font-medium {{ $link['active'] ? 'text-[#00FF00]' : 'text-white' }}">
+                    <a href="{{ $link['url'] }}" class="flex items-center justify-between px-4 py-3 border-b border-[#0B2A55] text-sm font-medium {{ $link['active'] ? 'text-[#36D9FF]' : 'text-white' }}">
                         <span>{{ $link['label'] }}</span>
-                        <span class="font-mono text-xs text-gray-500">{{ str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT) }}</span>
+                        <span class="font-mono text-xs text-[#C9D4E5]">{{ str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT) }}</span>
                     </a>
                     @endforeach
 
@@ -264,14 +273,14 @@
                         <x-currency-switcher />
                         @auth
                             @if(auth()->user()->isCustomer())
-                                <a href="{{ route('portal.dashboard') }}" class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-black bg-[#00FF00] hover:bg-[#00CC00] transition-colors rounded-sm">My Portal</a>
+                                <a href="{{ route('portal.dashboard') }}" class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white bg-[#287BFF] hover:bg-[#1D4ED8] rounded-md transition-colors">My Portal</a>
                             @else
-                                <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-black bg-[#00FF00] hover:bg-[#00CC00] transition-colors rounded-sm">Operations</a>
+                                <a href="{{ route('admin.dashboard') }}" class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white bg-[#287BFF] hover:bg-[#1D4ED8] rounded-md transition-colors">Operations</a>
                             @endif
                         @else
-                            <a href="{{ route('login') }}" class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white border border-gray-700 hover:border-[#00FF00] hover:text-[#00FF00] transition-colors rounded-sm">Client Portal / Login</a>
+                            <a href="{{ route('login') }}" class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white border border-[#36D9FF]/30 hover:border-[#36D9FF] hover:text-[#36D9FF] transition-colors rounded-md">Client Portal / Login</a>
                         @endauth
-                        <a href="{{ route('get-quote') }}" class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-black bg-[#00FF00] hover:bg-[#00CC00] transition-colors rounded-sm">Get Started</a>
+                        <a href="{{ route('get-quote') }}" class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white bg-[#287BFF] hover:bg-[#1D4ED8] border border-[#36D9FF]/40 rounded-md transition-colors">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -310,7 +319,7 @@
          ═══════════════════════════════════════════════════════════ --}}
     @php
         $footerCategories = \App\Models\ServiceCategory::where('is_active', true)->orderBy('sort_order')->take(6)->get();
-        $footerEmail = \App\Models\Setting::get('company_email', 'info@perfectitsecurity.com');
+        $footerEmail = \App\Models\Setting::get('company_email', 'info@ai-security-services.com');
         $footerPhone = \App\Models\Setting::get('company_phone', '');
     @endphp
     <footer class="dark-island relative bg-term-0 border-t border-term-300 z-10 overflow-hidden">
@@ -332,7 +341,7 @@
                             </svg>
                         </div>
                         <span class="font-display font-extrabold text-[15px] tracking-tight text-white">
-                            PERFECT<span class="text-accent">IT</span>SECURITY
+                            AI<span class="text-accent"> SECURITY </span>SERVICES
                         </span>
                     </a>
                     <p class="font-mono text-[11px] leading-relaxed text-term-700 uppercase tracking-wider max-w-xs mb-6">
@@ -387,6 +396,7 @@
                         <li><a href="{{ route('pricing') }}" class="text-term-800 hover:text-accent-soft transition-colors">Pricing</a></li>
                         <li><a href="{{ route('get-quote') }}" class="text-term-800 hover:text-accent-soft transition-colors">Get a Quote</a></li>
                         <li><a href="{{ route('industries') }}" class="text-term-800 hover:text-accent-soft transition-colors">Industries</a></li>
+                        <li><a href="{{ route('team') }}" class="text-term-800 hover:text-accent-soft transition-colors">Our Team</a></li>
                         <li><a href="{{ route('careers') }}" class="text-term-800 hover:text-accent-soft transition-colors">Careers</a></li>
                     </ul>
                 </div>
@@ -396,6 +406,7 @@
                     <h4 class="font-mono text-[10px] uppercase tracking-[0.24em] text-term-700 mb-4">// Resources</h4>
                     <ul class="space-y-2.5 text-sm">
                         <li><a href="{{ route('kb.index') }}" class="text-term-800 hover:text-accent-soft transition-colors">Knowledge Base</a></li>
+                        <li><a href="{{ route('skills') }}" class="text-term-800 hover:text-accent-soft transition-colors">Skills &amp; Capabilities</a></li>
                         <li><a href="{{ route('faq') }}" class="text-term-800 hover:text-accent-soft transition-colors">FAQ</a></li>
                         <li><a href="{{ route('blog.index') }}" class="text-term-800 hover:text-accent-soft transition-colors">Blog</a></li>
                         <li><a href="{{ route('useful-links') }}" class="text-term-800 hover:text-accent-soft transition-colors">Useful Links</a></li>
@@ -432,7 +443,7 @@
             {{-- Bottom bar --}}
             <div class="border-t border-term-300/70 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="font-mono text-[11px] text-term-700 tracking-wider">
-                    &copy; {{ date('Y') }} PERFECTITSECURITY. ALL RIGHTS RESERVED.
+                    &copy; {{ date('Y') }} AI SECURITY SERVICES. ALL RIGHTS RESERVED.
                 </p>
                 <div class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 font-mono text-[11px] text-term-700">
                     <a href="{{ route('legal.privacy') }}" class="hover:text-term-900 transition-colors">PRIVACY</a>
@@ -469,3 +480,4 @@
     </script>
 </body>
 </html>
+

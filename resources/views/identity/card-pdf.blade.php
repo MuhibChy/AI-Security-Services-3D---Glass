@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html><head><meta charset="utf-8"><style>body{font-family:DejaVu Sans,sans-serif;color:#111} .box{border:2px solid #1e40af;border-radius:12px;padding:24px;max-width:520px} h1{text-align:center;letter-spacing:4px;font-size:20px} .sub{text-align:center;color:#555;font-size:11px} .row{margin:6px 0;font-size:13px} .qr{text-align:center;margin-top:14px}</style></head>
 <body><div class="box">
-<h1>PERFECTITSECURITY</h1><p class="sub">DIGITAL MEMBER ID</p>
+<h1>AI SECURITY SERVICES</h1><p class="sub">DIGITAL MEMBER ID</p>
 <p class="row"><strong>{{ $user->name }}</strong></p>
 <p class="row">Member ID: {{ $user->member_number }}</p>
 <p class="row">Role: {{ $user->roleDisplayName() }}</p>

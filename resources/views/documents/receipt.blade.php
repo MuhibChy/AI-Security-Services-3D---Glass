@@ -17,10 +17,10 @@
     <div class="header">
         <table style="width:100%;"><tr>
             <td>
-                <div class="logo">PerfectITSecurity</div>
+                <div class="logo">AI Security Services</div>
                 <div style="color:#64748b; font-size:12px;">Enterprise IT Infrastructure & Cybersecurity</div>
                 <div style="color:#64748b; font-size:11px; margin-top:4px;">
-                    Email: support@perfectitsecurity.com | Web: www.perfectitsecurity.com
+                    Email: support@ai-security-services.com | Web: www.ai-security-services.com
                 </div>
             </td>
             <td style="text-align:right;">

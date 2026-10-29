@@ -47,7 +47,7 @@ class RoleRegistry
         return [
             [
                 'name' => 'customer', 'display_name' => 'Customer (Client Portal)',
-                'description' => 'For customers who purchase or request PerfectITSecurity services. Self-service portal for orders, tickets, invoices, projects and documents.',
+                'description' => 'For customers who purchase or request AI Security Services. Self-service portal for orders, tickets, invoices, projects and documents.',
                 'status' => 'active', 'registration_allowed' => true, 'approval_required' => false, 'self_registration' => true,
                 'dashboard_route' => 'portal.dashboard', 'dashboard_label' => 'Client Portal', 'sort_order' => 10,
                 'permissions' => ['portal.own', 'tickets.own', 'finance.own', 'training.learn', 'ai.use'],

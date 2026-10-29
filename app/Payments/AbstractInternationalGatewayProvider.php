@@ -35,8 +35,8 @@ abstract class AbstractInternationalGatewayProvider implements PaymentProviderIn
         if (! empty($currencies) && is_array($currencies)) {
             return in_array(strtoupper($currencyCode), array_map('strtoupper', $currencies), true);
         }
-        // By default, international gateways support major currencies
-        return in_array(strtoupper($currencyCode), ['USD', 'GBP', 'EUR', 'BDT', 'AED', 'SAR', 'QAR', 'CAD', 'AUD'], true);
+        // By default, international gateways support BDT, GBP, USD only
+        return in_array(strtoupper($currencyCode), ['USD', 'GBP', 'BDT'], true);
     }
 
     public function isLive(): bool

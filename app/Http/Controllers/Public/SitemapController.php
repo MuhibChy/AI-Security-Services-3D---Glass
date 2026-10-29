@@ -11,7 +11,7 @@ class SitemapController extends Controller
 {
     public function index()
     {
-        $url = config('app.url', 'https://techsupport.com');
+        $url = config('app.url', 'https://ai-security-services.com');
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>'."\n";
         $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'."\n";

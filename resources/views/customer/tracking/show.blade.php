@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', $project->name)
 @section('page-title', $project->name)
 
@@ -8,7 +8,7 @@
 </x-page-header>
 
 <div class="w-full h-2 bg-white/10 overflow-hidden mb-1">
-    <div class="h-full" style="width: {{ $progress['percent'] }}%; background: linear-gradient(90deg,#00E67A,#4DA3FF);"></div>
+    <div class="h-full" style="width: {{ $progress['percent'] }}%; background: linear-gradient(90deg,#36D9FF,#287BFF);"></div>
 </div>
 <p class="font-mono text-[11px] text-slate-600 dark:text-term-800 mb-6">{{ $progress['percent'] }}% · {{ $progress['basis'] }}</p>
 
@@ -65,3 +65,4 @@
     </div>
 </div>
 @endsection
+

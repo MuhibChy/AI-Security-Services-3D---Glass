@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'My Services')
 @section('page-title', 'My Services')
 
@@ -25,7 +25,7 @@
         </div>
         <p class="font-mono text-[11px] text-slate-600 dark:text-term-800 mb-2">{{ $s['order']->order_number }}</p>
         <div class="w-full h-2 bg-white/10 overflow-hidden mb-1">
-            <div class="h-full" style="width: {{ $s['progress']['percent'] }}%; background: linear-gradient(90deg,#00E67A,#4DA3FF);"></div>
+            <div class="h-full" style="width: {{ $s['progress']['percent'] }}%; background: linear-gradient(90deg,#36D9FF,#287BFF);"></div>
         </div>
         <p class="font-mono text-[11px] text-slate-600 dark:text-term-800 mb-2">{{ $s['progress']['percent'] }}% · {{ $s['progress']['basis'] }}</p>
         <dl class="text-sm space-y-1">
@@ -46,3 +46,4 @@
     @endforelse
 </div>
 @endsection
+

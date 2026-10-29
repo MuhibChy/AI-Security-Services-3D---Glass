@@ -230,6 +230,16 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Company::class);
     }
 
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class, 'user_id');
+    }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class, 'user_id')->latestOfMany();
+    }
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class, 'customer_id');

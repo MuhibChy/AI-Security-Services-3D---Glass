@@ -13,7 +13,10 @@ class Receipt extends Model
 
     protected static function booted(): void
     {
-        static::creating(fn (self $receipt) => $receipt->receipt_number ??= 'RCP-'.now()->format('Y').'-'.strtoupper(Str::random(6)));
+        static::creating(function (self $receipt) {
+            $receipt->receipt_number ??= 'RCP-'.now()->format('Y').'-'.strtoupper(Str::random(6));
+            $receipt->remaining_balance ??= 0.00;
+        });
     }
 
     public function payment()

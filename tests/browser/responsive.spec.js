@@ -77,6 +77,10 @@ test.describe('responsive layout', () => {
   });
 
   test('authenticated customer pages fit mobile widths', async ({ page }) => {
+    // loginAs + two full portal loads on single-threaded php -S with
+    // software-WebGL asset contention measures 45-54s on this box; 60s
+    // default leaves no headroom. Per-test bound, assertions unchanged.
+    test.setTimeout(120 * 1000);
     test.skip(
       page.viewportSize().width > 500,
       'mobile-only overflow sweep (other viewports covered by their own runs)'

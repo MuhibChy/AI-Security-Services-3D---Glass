@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Enterprise Pricing & SLA Plans — PerfectITSecurity')
+@section('title', 'Enterprise Pricing & SLA Plans | AI Security Services')
 @section('description', 'Predictable, transparent enterprise IT service plans. Proactive cybersecurity, cloud administration, and dedicated 24/7 SOC infrastructure support.')
 
 @section('content')

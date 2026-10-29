@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#050807">
+    <meta name="theme-color" content="#071A38">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Reset Password — PerfectITSecurity</title>
+    <title>Reset Password | AI Security Services</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -70,3 +70,4 @@
     </div>
 </body>
 </html>
+

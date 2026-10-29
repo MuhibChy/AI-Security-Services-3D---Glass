@@ -144,20 +144,30 @@ class PageHealthService
             $errorSummary = $e->getMessage();
         }
 
+        // Timestamp semantics: last_success_at only advances on success,
+        // last_failure_at only advances on failure. Eloquent datetime casts
+        // cannot round-trip DB::raw expressions, so the column is omitted
+        // (i.e. left untouched) instead of being "kept" via raw SQL.
+        $updates = [
+            'route_name' => $routeName,
+            'module' => $module,
+            'role_tested' => $role,
+            'http_status' => $httpStatus,
+            'response_time_ms' => $durationMs,
+            'status' => $status,
+            'error_summary' => $errorSummary,
+            'last_checked_at' => now(),
+        ];
+        if ($status === 'healthy') {
+            $updates['last_success_at'] = now();
+        }
+        if ($status === 'error') {
+            $updates['last_failure_at'] = now();
+        }
+
         $record = PageHealth::updateOrCreate(
             ['uri' => $uri, 'method' => 'GET'],
-            [
-                'route_name' => $routeName,
-                'module' => $module,
-                'role_tested' => $role,
-                'http_status' => $httpStatus,
-                'response_time_ms' => $durationMs,
-                'status' => $status,
-                'error_summary' => $errorSummary,
-                'last_checked_at' => now(),
-                'last_success_at' => $status === 'healthy' ? now() : DB::raw('last_success_at'),
-                'last_failure_at' => $status === 'error' ? now() : DB::raw('last_failure_at'),
-            ]
+            $updates
         );
 
         return $record;

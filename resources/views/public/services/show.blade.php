@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', $service->name . ' — PerfectITSecurity')
+@section('title', $service->name . ' | AI Security Services')
 @section('description', $service->seo_description ?? $service->short_description)
 
 @section('content')
@@ -40,6 +40,9 @@
                 </div>
             </div>
             <div>
+                <div class="mb-5 overflow-hidden rounded-2xl border border-royal-500/20 shadow-xl bg-navy-950/40">
+                    <x-service-3d-visual :type="$service->category->slug ?? $service->slug" />
+                </div>
                 <div class="term-panel p-8 sm:p-10 text-center lg:text-right">
                     <div class="font-mono text-[10px] uppercase tracking-[0.24em] text-term-700 mb-3">PRICING://STARTING-FROM</div>
                     @foreach($service->countryPrices as $cp)

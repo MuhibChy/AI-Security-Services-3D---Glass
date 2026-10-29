@@ -30,33 +30,35 @@ const LEGACY_TO_ENV = {
 };
 
 const ENVS = {
+    // Brand identity green reference (#22C55E) for cyber telemetry status
+    brandGreen: '#22C55E',
     // 1) CUSTOMER — Global IT Operations Center: wide ops wall, world-map
     //    dots, distant rack silhouettes, symmetric deep perspective.
-    operations:  { node: '#A7F3D0', link: 'rgba(167,243,208,', particle: '#BFDBFE', grid: 'rgba(37,99,235,', accent: 'rgba(52,211,153,', density: 0.55, speed: 0.6, gridOn: true, pulses: false, room: 'opsWall', horizon: 0.58, vanish: 0.5, floorAlpha: 0.10 },
+    operations:  { node: '#7FC0FF', link: 'rgba(127,192,255,', particle: '#BFDBFE', grid: 'rgba(37,99,235,', accent: 'rgba(54,217,255,', density: 0.55, speed: 0.6, gridOn: true, pulses: false, room: 'opsWall', horizon: 0.58, vanish: 0.5, floorAlpha: 0.10 },
     // 2) ADMIN — Enterprise Command Center: curved display arc, central
     //    command-table ellipse, layered wall depth.
-    command:     { node: '#22C55E', link: 'rgba(34,197,94,', particle: '#60A5FA', grid: 'rgba(30,58,138,', accent: 'rgba(96,165,250,', density: 1.0, speed: 1.0, gridOn: true, pulses: true, room: 'commandArc', horizon: 0.62, vanish: 0.5, floorAlpha: 0.14 },
+    command:     { node: '#287BFF', link: 'rgba(40,123,255,', particle: '#60A5FA', grid: 'rgba(30,58,138,', accent: 'rgba(96,165,250,', density: 1.0, speed: 1.0, gridOn: true, pulses: true, room: 'commandArc', horizon: 0.62, vanish: 0.5, floorAlpha: 0.14 },
     // 3) IT SUPPORT — Network Operations Room: side rack colonnades with
     //    fiber lights, topology displays, ceiling light bars.
-    network:     { node: '#4ADE80', link: 'rgba(74,222,128,', particle: '#93C5FD', grid: 'rgba(30,64,175,', accent: 'rgba(147,197,253,', density: 0.85, speed: 0.8, gridOn: true, pulses: true, room: 'rackColonnade', horizon: 0.55, vanish: 0.5, floorAlpha: 0.12 },
+    network:     { node: '#36D9FF', link: 'rgba(54,217,255,', particle: '#93C5FD', grid: 'rgba(30,64,175,', accent: 'rgba(147,197,253,', density: 0.85, speed: 0.8, gridOn: true, pulses: true, room: 'rackColonnade', horizon: 0.55, vanish: 0.5, floorAlpha: 0.12 },
     // 4) CYBERSECURITY — SOC: monitoring-wall screen grid, topology arcs,
     //    restrained blue/white light (no hacker clichés).
-    soc:         { node: '#7DD3FC', link: 'rgba(125,211,252,', particle: '#A7F3D0', grid: 'rgba(30,58,138,', accent: 'rgba(191,219,254,', density: 0.9, speed: 0.7, gridOn: true, pulses: true, room: 'socWall', horizon: 0.6, vanish: 0.5, floorAlpha: 0.12 },
+    soc:         { node: '#7DD3FC', link: 'rgba(125,211,252,', particle: '#C8F4FF', grid: 'rgba(30,58,138,', accent: 'rgba(191,219,254,', density: 0.9, speed: 0.7, gridOn: true, pulses: true, room: 'socWall', horizon: 0.6, vanish: 0.5, floorAlpha: 0.12 },
     // 5) PROJECTS — Digital Engineering Lab: floating panels at varied
     //    depths, architecture lines, soft studio wash.
-    engineering: { node: '#6EE7B7', link: 'rgba(110,231,183,', particle: '#93C5FD', grid: 'rgba(30,64,175,', accent: 'rgba(147,197,253,', density: 0.8, speed: 0.75, gridOn: false, pulses: true, room: 'floatingPanels', horizon: 0.52, vanish: 0.42, floorAlpha: 0.08 },
+    engineering: { node: '#7FB4E8', link: 'rgba(127,180,232,', particle: '#93C5FD', grid: 'rgba(30,64,175,', accent: 'rgba(147,197,253,', density: 0.8, speed: 0.75, gridOn: false, pulses: true, room: 'floatingPanels', horizon: 0.52, vanish: 0.42, floorAlpha: 0.08 },
     // 6) FINANCE — Fintech Center: metallic columns, chart skyline (abstract
     //    bars + trend line), calm symmetric order.
-    fintech:     { node: '#6EE7B7', link: 'rgba(110,231,183,', particle: '#BFDBFE', grid: 'rgba(23,37,84,', accent: 'rgba(191,219,254,', density: 0.6, speed: 0.55, gridOn: false, pulses: false, room: 'chartHall', horizon: 0.64, vanish: 0.5, floorAlpha: 0.10 },
+    fintech:     { node: '#5B9BFF', link: 'rgba(91,155,255,', particle: '#BFDBFE', grid: 'rgba(23,37,84,', accent: 'rgba(191,219,254,', density: 0.6, speed: 0.55, gridOn: false, pulses: false, room: 'chartHall', horizon: 0.64, vanish: 0.5, floorAlpha: 0.10 },
     // 7) AI/KNOWLEDGE — Intelligence Center: neural hub with spokes and
     //    orbiting knowledge nodes, concentric cognition rings.
-    intelligence:{ node: '#5EEAD4', link: 'rgba(94,234,212,', particle: '#BFDBFE', grid: 'rgba(30,58,138,', accent: 'rgba(167,243,208,', density: 0.75, speed: 0.65, gridOn: false, pulses: true, room: 'neuralHub', horizon: 0.5, vanish: 0.62, floorAlpha: 0.09 },
+    intelligence:{ node: '#4DC3FF', link: 'rgba(77,195,255,', particle: '#BFDBFE', grid: 'rgba(30,58,138,', accent: 'rgba(200,244,255,', density: 0.75, speed: 0.65, gridOn: false, pulses: true, room: 'neuralHub', horizon: 0.5, vanish: 0.62, floorAlpha: 0.09 },
     // 8) SUPPORT/TICKETS — Support Operations: comm wall band, global arcs
     //    between ground stations, warm-cool balance.
-    support:     { node: '#86EFAC', link: 'rgba(134,239,172,', particle: '#93C5FD', grid: 'rgba(30,58,138,', accent: 'rgba(147,197,253,', density: 0.7, speed: 0.7, gridOn: true, pulses: true, room: 'supportArcs', horizon: 0.66, vanish: 0.5, floorAlpha: 0.11 },
+    support:     { node: '#7BE2FF', link: 'rgba(123,226,255,', particle: '#93C5FD', grid: 'rgba(30,58,138,', accent: 'rgba(147,197,253,', density: 0.7, speed: 0.7, gridOn: true, pulses: true, room: 'supportArcs', horizon: 0.66, vanish: 0.5, floorAlpha: 0.11 },
     // 9) SETTINGS/PROFILE — Private Suite: minimal vanishing corridor, two
     //    glass panels, calmest composition of all rooms.
-    suite:       { node: '#BBF7D0', link: 'rgba(187,247,208,', particle: '#DBEAFE', grid: 'rgba(37,99,235,', accent: 'rgba(219,234,254,', density: 0.4, speed: 0.45, gridOn: false, pulses: false, room: 'quietCorridor', horizon: 0.5, vanish: 0.5, floorAlpha: 0.07 },
+    suite:       { node: '#C8F4FF', link: 'rgba(200,244,255,', particle: '#DBEAFE', grid: 'rgba(37,99,235,', accent: 'rgba(219,234,254,', density: 0.4, speed: 0.45, gridOn: false, pulses: false, room: 'quietCorridor', horizon: 0.5, vanish: 0.5, floorAlpha: 0.07 },
 };
 
 class RoleBackground {

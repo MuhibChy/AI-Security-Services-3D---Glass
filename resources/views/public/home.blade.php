@@ -1,16 +1,16 @@
 @extends('layouts.public')
 
-@section('title', 'PerfectITSecurity — Secure Your Digital World')
+@section('title', 'AI Security Services — Secure Your Digital World')
 @section('description', 'Managed IT support, cybersecurity, penetration testing, secure software development, and cloud/server management. Security operations active.')
 
 @section('content')
 
 {{-- ═══════════════════════════════════════════════════════════════
-     HERO — SYS://PERFECTITSECURITY
+     HERO — SYS://AISECURITYSERVICES
      Subtle CSS-only technical environment (grid is global via
      terminal-background). No canvas, no WebGL, no heavy JS.
      ═══════════════════════════════════════════════════════════════ --}}
-<section class="relative w-full overflow-hidden" aria-labelledby="hero-heading" data-3d-state="hero">
+<section class="relative w-full overflow-hidden pt-16 sm:pt-20" aria-labelledby="hero-heading" data-3d-state="hero">
     <div class="absolute inset-0 bg-cyber-grid opacity-60 pointer-events-none" aria-hidden="true"></div>
     <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" aria-hidden="true"></div>
     {{-- faint system coordinates --}}
@@ -25,7 +25,7 @@
         <div class="max-w-4xl">
             {{-- monospace status --}}
             <div class="flex flex-wrap items-center gap-2.5 mb-7 reveal">
-                <span class="term-tag term-tag-accent">SYS://PERFECTITSECURITY</span>
+                <span class="term-tag term-tag-accent">SYS://AISECURITYSERVICES</span>
                 <span class="term-status text-emerald-700 dark:text-accent-soft"><span class="term-status-dot" aria-hidden="true"></span>Status: Online</span>
                 <span class="term-tag">Security operations active</span>
             </div>
@@ -36,7 +36,7 @@
             </h1>
 
             <p class="mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-surface-600 dark:text-term-800 max-w-2xl reveal delay-100">
-                PerfectITSecurity provides managed IT support, cybersecurity and penetration
+                AI Security Services provides managed IT support, cybersecurity and penetration
                 testing, secure software development, cloud and server management, web
                 development, and dependable digital solutions — built, secured, and operated
                 by one engineering team.
@@ -98,32 +98,60 @@
 
         <div class="mt-10 lg:mt-14 grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-4 overflow-hidden">
             @forelse($serviceCategories as $i => $cat)
-            <article class="term-panel min-w-0 p-5 sm:p-6 group reveal card-3d tilt-3d" aria-labelledby="svc-{{ $cat->id }}">
+            @php
+                $catDesc = $cat->description ?? 'Scoped, priced, and delivered through the client portal with full service history.';
+                $previewTags = $cat->services->take(4);
+            @endphp
+            <article class="service-card collapsed" id="service-card-{{ $cat->id }}" aria-labelledby="svc-{{ $cat->id }}">
                 <span class="card-3d-shine" aria-hidden="true"></span>
-                <div class="flex items-start justify-between gap-4 mb-5">
-                    <span class="font-mono text-[11px] tracking-[0.24em] text-accent-soft">{{ str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT) }} / {{ strtoupper($cat->name) }}</span>
-                    <span class="term-tag">{{ $cat->services->count() }} module{{ $cat->services->count() === 1 ? '' : 's' }}</span>
+
+                <div class="service-card-head">
+                    <div class="flex items-start justify-between gap-4 mb-3">
+                        <span class="font-mono text-[11px] tracking-[0.24em] text-accent-soft">{{ str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT) }} / {{ strtoupper($cat->name) }}</span>
+                        <span class="term-tag">{{ $cat->services->count() }} module{{ $cat->services->count() === 1 ? '' : 's' }}</span>
+                    </div>
+
+                    <div class="mb-3 overflow-hidden rounded-xl border border-royal-500/20 shadow-md max-w-xs ml-auto w-full service-card-visual">
+                        <x-service-3d-visual :type="$cat->slug" />
+                    </div>
+
+                    <h3 id="svc-{{ $cat->id }}" class="font-display text-base sm:text-lg font-bold tracking-tight text-navy-900 dark:text-white group-hover:text-accent-soft transition-colors">
+                        {{ $cat->name }}
+                    </h3>
+
+                    <p class="service-card-preview mt-2 text-sm leading-relaxed text-surface-600 dark:text-term-800">{{ $catDesc }}</p>
+
+                    @if($cat->services->isNotEmpty())
+                    <ul class="service-card-tags-preview mt-3 flex flex-wrap gap-1.5" aria-label="Services in {{ $cat->name }}">
+                        @foreach($previewTags as $svc)
+                        <li><a href="{{ route('services.show', $svc->slug) }}" class="term-tag hover:border-accent/50 hover:text-accent-soft transition-colors">{{ $svc->name }}</a></li>
+                        @endforeach
+                        @if($cat->services->count() > 4)
+                        <li class="term-tag service-card-tags-more" aria-hidden="true">+{{ $cat->services->count() - 4 }} more</li>
+                        @endif
+                    </ul>
+                    @endif
+
+                    <div class="service-card-actions mt-4 pt-4 border-t border-term-300 dark:border-white/5 flex flex-wrap items-center gap-x-6 gap-y-3">
+                        <a href="{{ route('services.index') }}?category={{ $cat->slug }}" class="term-link">Learn More
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                        </a>
+                        <a href="{{ auth()->check() ? route('portal.service-request.create') : route('get-quote') }}" class="term-link">Request Service
+                            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        </a>
+                        <button type="button" class="service-card-toggle" aria-expanded="false" aria-controls="service-card-body-{{ $cat->id }}">Show all services</button>
+                    </div>
                 </div>
-                <h3 id="svc-{{ $cat->id }}" class="font-display text-lg sm:text-xl font-bold tracking-tight text-navy-900 dark:text-white group-hover:text-accent-soft transition-colors">
-                    {{ $cat->name }}
-                </h3>
-                <p class="mt-2.5 text-sm leading-relaxed text-surface-600 dark:text-term-800">
-                    {{ $cat->description ?? 'Scoped, priced, and delivered through the client portal with full service history.' }}
-                </p>
-                @if($cat->services->isNotEmpty())
-                <ul class="mt-5 flex flex-wrap gap-1.5" aria-label="Services in {{ $cat->name }}">
-                    @foreach($cat->services->take(8) as $svc)
-                    <li><a href="{{ route('services.show', $svc->slug) }}" class="term-tag hover:border-accent/50 hover:text-accent-soft transition-colors">{{ $svc->name }}</a></li>
-                    @endforeach
-                </ul>
-                @endif
-                <div class="mt-6 pt-5 border-t border-term-300 dark:border-white/5 flex flex-wrap items-center gap-x-6 gap-y-3">
-                    <a href="{{ route('services.index') }}?category={{ $cat->slug }}" class="term-link">Learn More
-                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                    </a>
-                    <a href="{{ auth()->check() ? route('portal.service-request.create') : route('get-quote') }}" class="term-link">Request Service
-                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-                    </a>
+
+                <div class="service-card-body" id="service-card-body-{{ $cat->id }}" aria-hidden="true">
+                    <p class="service-card-desc mt-3 text-sm leading-relaxed text-surface-600 dark:text-term-800">{{ $catDesc }}</p>
+                    @if($cat->services->isNotEmpty())
+                    <ul class="service-card-tags mt-4 flex flex-wrap gap-1.5" aria-label="Services in {{ $cat->name }}">
+                        @foreach($cat->services->take(8) as $svc)
+                        <li><a href="{{ route('services.show', $svc->slug) }}" class="term-tag hover:border-accent/50 hover:text-accent-soft transition-colors">{{ $svc->name }}</a></li>
+                        @endforeach
+                    </ul>
+                    @endif
                 </div>
             </article>
             @empty
@@ -142,7 +170,7 @@
         <x-section-head num="02" label="WHY://OPERATE"
             title="Complexity is the risk. Discipline is the answer."
             desc="Digital systems become increasingly complex. We counter that with one operating model across IT, security, and engineering." />
-        <span id="why-heading" class="sr-only">Why PerfectITSecurity</span>
+        <span id="why-heading" class="sr-only">Why AI Security Services</span>
 
         <div class="mt-10 lg:mt-14 grid gap-4 sm:gap-5 md:grid-cols-2 xl:grid-cols-4">
             @foreach([

@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Global Offices — Our International Presence')
-@section('description', 'PerfectITSecurity operates from strategic locations across the globe, providing 24/7 IT support, cybersecurity, and cloud services to enterprises worldwide.')
+@section('description', 'AI Security Services operates from strategic locations across the globe, providing 24/7 IT support, cybersecurity, and cloud services to enterprises worldwide.')
 
 @section('content')
 

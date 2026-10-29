@@ -11,6 +11,9 @@ use Tests\TestCase;
  * Location-based currency: at most the supported local currency + USD,
  * USD-only fallback for unsupported countries, no duplicate USD, account
  * persistence, historical-record preservation, and route enforcement.
+ *
+ * Supported customer-facing currencies: BDT, GBP, USD.
+ * All other countries (DE, AE, KW, FR, QA, etc.) fall back to USD-only.
  */
 class CustomerCurrencyTest extends TestCase
 {
@@ -31,10 +34,13 @@ class CustomerCurrencyTest extends TestCase
         $this->assertSame(['GBP', 'USD'], $this->customer('United Kingdom', 'UK')->availableCurrencies());
         $this->assertSame(['USD'], $this->customer('United States', 'US')->availableCurrencies());
         $this->assertSame(['BDT', 'USD'], $this->customer('Bangladesh', 'BD')->availableCurrencies());
-        $this->assertSame(['EUR', 'USD'], $this->customer('Germany', 'DE')->availableCurrencies());
-        $this->assertSame(['AED', 'USD'], $this->customer('United Arab Emirates', 'AE')->availableCurrencies());
-        $this->assertSame(['KWD', 'USD'], $this->customer('Kuwait', 'KW')->availableCurrencies());
-        // Unsupported country → USD only (never an invented currency).
+        // Unsupported / excluded countries → USD only (never an invented currency).
+        $this->assertSame(['USD'], $this->customer('Germany', 'DE')->availableCurrencies());
+        $this->assertSame(['USD'], $this->customer('United Arab Emirates', 'AE')->availableCurrencies());
+        $this->assertSame(['USD'], $this->customer('Kuwait', 'KW')->availableCurrencies());
+        $this->assertSame(['USD'], $this->customer('France', 'FR')->availableCurrencies());
+        $this->assertSame(['USD'], $this->customer('Qatar', 'QA')->availableCurrencies());
+        // Truly unknown → USD only.
         $this->assertSame(['USD'], $this->customer('Atlantis', null)->availableCurrencies());
         $this->assertSame(['USD'], $this->customer(null, null)->availableCurrencies());
         // No duplicate USD for the US customer.
@@ -47,6 +53,8 @@ class CustomerCurrencyTest extends TestCase
         $this->assertSame(['GBP', 'USD'], $this->customer('United Kingdom', null)->availableCurrencies());
         $this->assertSame(['GBP', 'USD'], $this->customer('Great Britain', null)->availableCurrencies());
         $this->assertSame(['BDT', 'USD'], $this->customer('bangladesh', null)->availableCurrencies());
+        // Excluded countries resolve to USD only (local currency not in allowed set).
+        $this->assertSame(['USD'], $this->customer('Germany', null)->availableCurrencies());
     }
 
     /** @test */
@@ -56,7 +64,7 @@ class CustomerCurrencyTest extends TestCase
         $this->actingAs($uk)->get('/currency/GBP')->assertRedirect();
         $this->assertSame('GBP', $uk->fresh()->preferred_currency);
         $this->actingAs($uk)->get('/currency/USD')->assertRedirect();
-        // Supported globally but not allowed for this account.
+        // BDT is globally active but not allowed for a UK customer.
         $this->actingAs($uk)->get('/currency/BDT')->assertStatus(422);
         $this->actingAs($uk)->get('/currency/XXX')->assertStatus(400);
         // Guests keep the public catalog behavior (log out first: actingAs persists).

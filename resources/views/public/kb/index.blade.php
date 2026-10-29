@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Knowledge Base & Technical Guides — PerfectITSecurity')
+@section('title', 'Knowledge Base & Technical Guides | AI Security Services')
 @section('description', 'Comprehensive technical documentation, cybersecurity runbooks, infrastructure guides, and FAQs.')
 
 @section('content')

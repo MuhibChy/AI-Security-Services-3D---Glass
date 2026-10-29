@@ -34,7 +34,7 @@ class XlsxExportService
 
         $addRow([$title]);
         $addRow(['Generated', now()->format('Y-m-d H:i'), 'Period', $period]);
-        $addRow(['PerfectITSecurity — Confidential']);
+        $addRow(['AI Security Services — Confidential']);
         foreach ($summary as $k => $v) {
             $addRow([$k, $v]);
         }

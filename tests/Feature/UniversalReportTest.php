@@ -193,7 +193,7 @@ class UniversalReportTest extends TestCase
         $customer = $this->person('customer');
         $svc = app(\App\Services\ServiceOrderWorkflowService::class);
         $finance = $this->person('finance_manager');
-        foreach ([['USD', 400], ['EUR', 300]] as [$ccy, $total]) {
+        foreach ([['USD', 400], ['GBP', 300]] as [$ccy, $total]) {
             $order = \App\Models\ServiceOrder::create([
                 'customer_id' => $customer->id, 'service_id' => $this->service()->id,
                 'requirements' => 'Multi-currency probe order detail.', 'status' => 'confirmed',
@@ -204,7 +204,7 @@ class UniversalReportTest extends TestCase
         }
         $report = app(ReportExportService::class)->build('customer', ['customer_id' => $customer->id], $customer);
         $this->assertStringContainsString('"USD":100', str_replace(' ', '', $report['summary']['Paid (by currency)']));
-        $this->assertStringContainsString('"EUR":100', str_replace(' ', '', $report['summary']['Paid (by currency)']));
+        $this->assertStringContainsString('"GBP":100', str_replace(' ', '', $report['summary']['Paid (by currency)']));
     }
 
     private function service(): \App\Models\Service

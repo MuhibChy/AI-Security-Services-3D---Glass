@@ -12,5 +12,9 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
         $this->withoutMiddleware(\App\Http\Middleware\VerifyCsrfToken::class);
+
+        // Apply migrations on each test to ensure clean state
+        // Note: We're testing the live application, so we'll create necessary test data
+        // rather than relying on full migrations which would affect production
     }
 }

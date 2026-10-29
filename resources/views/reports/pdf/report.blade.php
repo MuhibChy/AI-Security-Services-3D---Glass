@@ -19,7 +19,7 @@ th { background: #e5e7eb; }
 </head>
 <body>
 <div class="header">
-<div class="brand">PerfectITSecurity</div>
+<div class="brand">AI Security Services</div>
 <div class="meta">Report generated {{ $generatedAt }} by {{ $generatedBy }} · Period: {{ $report['period'] ?? '—' }}</div>
 @if(!empty($report['confidential']))<div class="confidential">CONFIDENTIAL — authorized recipients only</div>@endif
 </div>
@@ -33,6 +33,6 @@ th { background: #e5e7eb; }
 <tbody>
 @forelse($report['rows'] as $row)<tr>@foreach($row as $cell)<td>{{ $cell }}</td>@endforeach</tr>@empty<tr><td colspan="{{ count($report['columns']) }}">No records for the selected filters.</td></tr>@endforelse
 </tbody></table>
-<div class="footer">PerfectITSecurity · Confidential business report · Generated {{ $generatedAt }} · Totals computed server-side from authoritative records · Page managed by PDF renderer</div>
+<div class="footer">AI Security Services · Confidential business report · Generated {{ $generatedAt }} · Totals computed server-side from authoritative records · Page managed by PDF renderer</div>
 </body>
 </html>

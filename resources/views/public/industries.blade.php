@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
 @section('title', 'Industries We Serve — Global IT Solutions')
-@section('description', 'PerfectITSecurity serves enterprises across healthcare, finance, e-commerce, education, manufacturing, and government with tailored IT, cybersecurity, and cloud services.')
+@section('description', 'AI Security Services serves enterprises across healthcare, finance, e-commerce, education, manufacturing, and government with tailored IT, cybersecurity, and cloud services.')
 
 @section('content')
 

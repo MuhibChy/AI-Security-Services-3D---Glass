@@ -18,7 +18,7 @@ class PaymentProviderSeeder extends Seeder
         $rows = [
             [
                 'key' => 'stripe', 'name' => 'Stripe (card / hosted checkout)', 'type' => 'gateway',
-                'country' => 'International', 'currencies' => ['AED', 'SAR', 'QAR', 'KWD', 'BHD', 'OMR', 'JOD', 'EUR', 'GBP', 'USD'],
+                'country' => 'International', 'currencies' => ['GBP', 'USD'],
                 'payment_methods' => ['checkout', 'card', 'refund'], 'environment' => 'test',
                 'status' => $stripeConfigured ? 'test' : 'disabled', 'priority' => 20,
                 'fee_type' => 'mixed', 'fee_value' => 0, 'platform_fee_value' => 0,
@@ -26,7 +26,7 @@ class PaymentProviderSeeder extends Seeder
             ],
             [
                 'key' => 'international_gateway', 'name' => 'International Gateway', 'type' => 'gateway',
-                'country' => 'International', 'currencies' => ['USD', 'GBP', 'EUR', 'CAD', 'AUD', 'AED'],
+                'country' => 'International', 'currencies' => ['USD', 'GBP'],
                 'payment_methods' => ['checkout', 'card', 'wire'], 'environment' => 'test',
                 'status' => 'disabled', 'priority' => 25,
                 'fee_type' => 'mixed', 'fee_value' => 0, 'platform_fee_value' => 0,
@@ -34,7 +34,7 @@ class PaymentProviderSeeder extends Seeder
             ],
             [
                 'key' => 'paypal', 'name' => 'PayPal', 'type' => 'gateway',
-                'country' => 'International', 'currencies' => ['USD', 'GBP', 'EUR', 'CAD', 'AUD'],
+                'country' => 'International', 'currencies' => ['USD', 'GBP'],
                 'payment_methods' => ['checkout', 'wallet'], 'environment' => 'test',
                 'status' => 'disabled', 'priority' => 22,
                 'fee_type' => 'percent', 'fee_value' => 0, 'platform_fee_value' => 0,

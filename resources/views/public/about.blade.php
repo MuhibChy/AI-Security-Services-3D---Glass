@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'About Us — PerfectITSecurity')
+@section('title', 'About Us | AI Security Services')
 @section('description', 'Enterprise IT infrastructure, cybersecurity, and cloud engineering company. Our team delivers technology solutions for organizations worldwide.')
 
 @section('content')
@@ -12,13 +12,13 @@
         <div class="max-w-4xl">
             <div class="flex flex-wrap items-center gap-2.5 mb-7">
                 <span class="term-tag term-tag-accent">SYSTEM://ABOUT</span>
-                <span class="term-tag">PerfectITSecurity</span>
+                <span class="term-tag">AI Security Services</span>
             </div>
             <h1 id="about-hero-heading" class="font-display font-extrabold tracking-tight leading-[1.02] text-4xl sm:text-6xl lg:text-7xl text-navy-900 dark:text-white text-balance">
                 WE ENGINEER THE <span class="text-accent-soft">UNSHAKEABLE BACKBONE</span> OF MODERN BUSINESS.
             </h1>
             <p class="mt-6 text-base sm:text-lg lg:text-xl leading-relaxed text-slate-600 dark:text-term-800 max-w-3xl">
-                PerfectITSecurity delivers enterprise-grade IT infrastructure, predictive cybersecurity, and cloud engineering. We are trusted by organizations that demand continuous reliability, rigorous security compliance, and uncompromising operational uptime.
+                AI Security Services delivers enterprise-grade IT infrastructure, predictive cybersecurity, and cloud engineering. We are trusted by organizations that demand continuous reliability, rigorous security compliance, and uncompromising operational uptime.
             </p>
         </div>
     </div>

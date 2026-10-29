@@ -1,7 +1,7 @@
 @extends('layouts.public')
 
-@section('title', 'Service Level Agreement (SLA) — PerfectITSecurity')
-@section('description', 'PerfectITSecurity service level agreement outlining response times, resolution targets, uptime guarantees, and escalation procedures.')
+@section('title', 'Service Level Agreement (SLA) | AI Security Services')
+@section('description', 'AI Security Services service level agreement outlining response times, resolution targets, uptime guarantees, and escalation procedures.')
 
 @section('content')
 
@@ -44,7 +44,7 @@
                     <div class="term-sec-label mb-2">SECTION://01</div>
                     <h2 class="font-display text-xl font-bold text-navy-900 dark:text-white mb-3">Purpose</h2>
                     <p class="text-sm leading-relaxed">
-                        This Service Level Agreement (SLA) defines the service standards, response times, resolution targets, and escalation procedures that PerfectITSecurity commits to when delivering IT support, managed services, and professional engagements to its clients.
+                        This Service Level Agreement (SLA) defines the service standards, response times, resolution targets, and escalation procedures that AI Security Services commits to when delivering IT support, managed services, and professional engagements to its clients.
                     </p>
                 </div>
 
@@ -52,7 +52,7 @@
                     <div class="term-sec-label mb-2">SECTION://02</div>
                     <h2 class="font-display text-xl font-bold text-navy-900 dark:text-white mb-3">Scope</h2>
                     <p class="text-sm leading-relaxed">
-                        This SLA applies to all active service agreements between PerfectITSecurity and its clients. Specific SLA tiers may vary based on the client's service plan, contract terms, and priority level.
+                        This SLA applies to all active service agreements between AI Security Services and its clients. Specific SLA tiers may vary based on the client's service plan, contract terms, and priority level.
                     </p>
                 </div>
 
@@ -116,7 +116,7 @@
                     <div class="term-sec-label mb-2">SECTION://06</div>
                     <h2 class="font-display text-xl font-bold text-navy-900 dark:text-white mb-3">Uptime Guarantee</h2>
                     <p class="text-sm leading-relaxed">
-                        For managed services clients, PerfectITSecurity guarantees a minimum of <strong class="text-navy-900 dark:text-white">99.9% uptime</strong> for supported systems during each calendar month. Uptime is measured excluding scheduled maintenance windows (communicated 48 hours in advance) and force majeure events.
+                        For managed services clients, AI Security Services guarantees a minimum of <strong class="text-navy-900 dark:text-white">99.9% uptime</strong> for supported systems during each calendar month. Uptime is measured excluding scheduled maintenance windows (communicated 48 hours in advance) and force majeure events.
                     </p>
                 </div>
 
@@ -145,7 +145,7 @@
                     <div class="term-sec-label mb-2">SECTION://09</div>
                     <h2 class="font-display text-xl font-bold text-navy-900 dark:text-white mb-3">Reporting</h2>
                     <p class="text-sm leading-relaxed">
-                        PerfectITSecurity provides monthly SLA compliance reports to all managed services clients. Reports include response times, resolution times, uptime metrics, ticket volumes, and SLA breach analysis.
+                        AI Security Services provides monthly SLA compliance reports to all managed services clients. Reports include response times, resolution times, uptime metrics, ticket volumes, and SLA breach analysis.
                     </p>
                 </div>
 

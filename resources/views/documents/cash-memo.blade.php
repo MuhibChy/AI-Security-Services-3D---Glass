@@ -16,7 +16,7 @@
 <body>
     <div class="header">
         <table style="width:100%;"><tr>
-            <td><div class="logo">PerfectITSecurity</div><div style="color:#64748b;">Enterprise IT Infrastructure & Cybersecurity</div></td>
+            <td><div class="logo">AI Security Services</div><div style="color:#64748b;">Enterprise IT Infrastructure & Cybersecurity</div></td>
             <td style="text-align:right;"><div class="doc-title">CASH MEMO</div><div style="font-weight:600;">#{{ $memo->cash_memo_number }}</div><div>{{ $memo->issued_at?->format('d M Y') }}</div></td>
         </tr></table>
     </div>
