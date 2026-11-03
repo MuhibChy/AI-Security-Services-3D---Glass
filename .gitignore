@@ -103,3 +103,9 @@ Thumbs.db
 .kilo/
 .kilocode/
 .opencode/
+
+# Local backup copies
+*_1
+*_1.*
+*.blade_1.php
+

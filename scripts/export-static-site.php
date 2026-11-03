@@ -31,6 +31,7 @@ $routes = [
     '/useful-links' => 'useful-links.html',
     '/blog' => 'blog.html',
     '/knowledge-base' => 'knowledge-base.html',
+    '/knowledge-hub' => 'knowledge-hub.html',
     '/get-quote' => 'get-quote.html',
     '/legal/privacy-policy' => 'legal/privacy-policy.html',
     '/legal/terms-of-service' => 'legal/terms-of-service.html',
@@ -41,6 +42,16 @@ $routes = [
     '/login' => 'login.html',
     '/register' => 'register.html',
 ];
+
+// Add dynamic industry pages
+try {
+    $industries = \App\Support\IndustryCatalogue::slugs();
+    foreach ($industries as $slug) {
+        $routes["/industries/{$slug}"] = "industries/{$slug}.html";
+    }
+} catch (\Throwable $e) {
+    echo 'Warning: could not query industries: '.$e->getMessage()."\n";
+}
 
 // Add dynamic service pages
 try {
@@ -55,7 +66,7 @@ try {
 echo 'Exporting '.count($routes)." routes to {$outputDir}...\n";
 
 // Ensure subdirectories exist
-foreach (['services', 'legal'] as $sub) {
+foreach (['services', 'legal', 'industries'] as $sub) {
     $dir = $outputDir.'/'.$sub;
     if (! is_dir($dir)) {
         mkdir($dir, 0755, true);
@@ -84,6 +95,8 @@ foreach ($routes as $uri => $relativeFilePath) {
         // Rewrite localhost & absolute URLs to relative static paths
         $html = str_replace('http://localhost:8000/build/', $prefix.'build/', $html);
         $html = str_replace('http://localhost/build/', $prefix.'build/', $html);
+        $html = str_replace('http://localhost:8000/images/', $prefix.'images/', $html);
+        $html = str_replace('http://localhost/images/', $prefix.'images/', $html);
         $html = str_replace('http://localhost:8000/favicon.ico', $prefix.'favicon.ico', $html);
         $html = str_replace('http://localhost/favicon.ico', $prefix.'favicon.ico', $html);
         $html = str_replace('href="http://localhost:8000"', 'href="'.$prefix.'index.html"', $html);
@@ -108,6 +121,7 @@ foreach ($routes as $uri => $relativeFilePath) {
             'href="/useful-links"' => 'href="'.$prefix.'useful-links.html"',
             'href="/blog"' => 'href="'.$prefix.'blog.html"',
             'href="/knowledge-base"' => 'href="'.$prefix.'knowledge-base.html"',
+            'href="/knowledge-hub"' => 'href="'.$prefix.'knowledge-hub.html"',
             'href="/get-quote"' => 'href="'.$prefix.'get-quote.html"',
             'href="/legal/privacy-policy"' => 'href="'.$prefix.'legal/privacy-policy.html"',
             'href="/legal/terms-of-service"' => 'href="'.$prefix.'legal/terms-of-service.html"',
@@ -133,9 +147,15 @@ foreach ($routes as $uri => $relativeFilePath) {
             return 'href="'.$prefix.'services/'.$m[1].'.html"';
         }, $html);
 
+        // Regex replace /industries/{slug} to industries/{slug}.html
+        $html = preg_replace_callback('/href=[\'"](?:\/|http:\/\/localhost:8000\/)industries\/([a-zA-Z0-9\-_]+)[\'"]/', function ($m) use ($prefix) {
+            return 'href="'.$prefix.'industries/'.$m[1].'.html"';
+        }, $html);
+
         // Replace any remaining root-relative build/asset links
         $html = str_replace('="/build/', '="'.$prefix.'build/', $html);
         $html = str_replace('="/favicon.ico"', '="'.$prefix.'favicon.ico"', $html);
+        $html = str_replace('="/images/', '="'.$prefix.'images/', $html);
 
 
         // ── Harden against production APP_URL leaks (root cause of unstyled Pages) ──
@@ -243,6 +263,9 @@ function copyDir($src, $dst)
 }
 
 copyDir(__DIR__.'/../public/build', $outputDir.'/build');
+if (is_dir(__DIR__.'/../public/images')) {
+    copyDir(__DIR__.'/../public/images', $outputDir.'/images');
+}
 if (file_exists(__DIR__.'/../public/favicon.ico')) {
     copy(__DIR__.'/../public/favicon.ico', $outputDir.'/favicon.ico');
 }

@@ -9,6 +9,7 @@ use App\Models\KbArticle;
 use App\Models\PortfolioItem;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Support\IndustryCatalogue;
 
 class HomeController extends Controller
 {
@@ -40,9 +41,13 @@ class HomeController extends Controller
         $kbCategories = \App\Models\KbCategory::where('is_active', true)
             ->orderBy('sort_order')->limit(8)->get();
 
+        // All 20 preferred industries, ordered by the admin-controlled sort.
+        $homeIndustries = IndustryCatalogue::all(true);
+
         return view('public.home', compact(
             'featuredServices', 'latestPosts', 'serviceCategories',
-            'portfolioItems', 'caseStudies', 'kbArticles', 'kbCategories'
+            'portfolioItems', 'caseStudies', 'kbArticles', 'kbCategories',
+            'homeIndustries'
         ));
     }
 }

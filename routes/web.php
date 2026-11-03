@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\ExpenseController;
 use App\Http\Controllers\Admin\FinancialController;
 use App\Http\Controllers\Admin\InvoiceController as AdminInvoice;
+use App\Http\Controllers\Admin\IndustryController as AdminIndustry;
 use App\Http\Controllers\Admin\KnowledgeBaseController as AdminKB;
 use App\Http\Controllers\Admin\LinkSubmissionController;
 use App\Http\Controllers\Admin\ManualController;
@@ -38,6 +39,7 @@ use App\Http\Controllers\Public\BlogController;
 use App\Http\Controllers\Public\ContactController;
 use App\Http\Controllers\Public\ContentPageController;
 use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\IndustryController;
 use App\Http\Controllers\Public\KnowledgeBaseController;
 use App\Http\Controllers\Public\LegalController;
 use App\Http\Controllers\Public\PricingController;
@@ -80,7 +82,8 @@ Route::post('/get-quote', [\App\Http\Controllers\Public\QuoteController::class, 
 Route::get('/currency/{currency}', [\App\Http\Controllers\Public\CurrencyController::class, 'switch'])->name('currency.switch');
 Route::get('/team', fn () => view('public.team'))->name('team');
 Route::get('/careers', fn () => view('public.careers'))->name('careers');
-Route::get('/industries', fn () => view('public.industries'))->name('industries');
+Route::get('/industries', [IndustryController::class, 'index'])->name('industries');
+Route::get('/industries/{slug}', [IndustryController::class, 'show'])->name('industries.show');
 Route::get('/offices', fn () => view('public.offices'))->name('offices');
 Route::get('/case-studies', [ContentPageController::class, 'caseStudies'])->name('case-studies');
 Route::get('/case-studies/{slug}', [ContentPageController::class, 'caseStudy'])->name('case-studies.show');
@@ -91,6 +94,15 @@ Route::get('/useful-links', [UsefulLinksController::class, 'index'])->name('usef
 Route::post('/useful-links/submit', [UsefulLinksController::class, 'submit'])->middleware('throttle:10,1')->name('useful-links.submit');
 
 // Legal routes
+// Canonical redirects for standard legal routes
+Route::redirect('/privacy', '/legal/privacy-policy', 301);
+Route::redirect('/privacy-policy', '/legal/privacy-policy', 301);
+Route::redirect('/terms', '/legal/terms-of-service', 301);
+Route::redirect('/terms-of-service', '/legal/terms-of-service', 301);
+Route::redirect('/cookie-policy', '/legal/cookie-policy', 301);
+Route::redirect('/cookies', '/legal/cookie-policy', 301);
+Route::redirect('/accessibility', '/legal/accessibility', 301);
+
 Route::prefix('legal')->name('legal.')->group(function () {
     Route::get('/privacy-policy', [LegalController::class, 'privacy'])->name('privacy');
     Route::get('/terms-of-service', [LegalController::class, 'terms'])->name('terms');
@@ -610,6 +622,9 @@ Route::middleware(['auth', 'staff', 'mfa'])->prefix('admin')->name('admin.')->gr
         Route::post('/content/careers', [ContentController::class, 'storeCareer'])->name('content.careers.store');
         Route::put('/content/careers/{career}', [ContentController::class, 'updateCareer'])->name('content.careers.update');
         Route::delete('/content/careers/{career}', [ContentController::class, 'destroyCareer'])->name('content.careers.destroy');
+        // Preferred industries (additive industry pages).
+        Route::resource('industries', AdminIndustry::class)->except(['show']);
+
         Route::get('/content/portfolio', [ContentController::class, 'portfolio'])->name('content.portfolio');
         Route::post('/content/portfolio', [ContentController::class, 'storePortfolio'])->name('content.portfolio.store');
         Route::put('/content/portfolio/{portfolio}', [ContentController::class, 'updatePortfolio'])->name('content.portfolio.update');

@@ -289,7 +289,7 @@
 
     {{-- Nav spacer for non-hero pages --}}
     @if(!request()->routeIs('home'))
-    <div class="h-14 bg-black/0"></div>
+    <div class="h-16 bg-black/0" aria-hidden="true"></div>
     @endif
 
     {{-- Flash Messages --}}

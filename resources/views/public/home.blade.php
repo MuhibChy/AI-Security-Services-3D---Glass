@@ -477,11 +477,66 @@
     </div>
 </section>
 
-{{-- ═══════════ 12 / KNOWLEDGE://BASE ═══════════ --}}
+{{-- ═══════════ 12 / INDUSTRIES://SERVE ═══════════ --}}
+<section class="relative w-full py-16 sm:py-20 lg:py-28 border-t border-term-300 dark:border-white/5" aria-labelledby="industries-heading" id="industries" data-3d-state="industries">
+    <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <x-section-head num="12" label="INDUSTRIES://SERVE"
+                title="Industries We Serve"
+                desc="We provide reliable, scalable, and secure IT support solutions for businesses across diverse industries worldwide." />
+            <a href="{{ route('industries') }}" class="term-link flex-shrink-0 reveal">Explore all industries
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
+        </div>
+        <span id="industries-heading" class="sr-only">Industries We Serve</span>
+
+        <div class="mt-10 lg:mt-14 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            @forelse($homeIndustries as $industry)
+            <article class="term-panel p-5 sm:p-6 group flex flex-col reveal">
+                <div class="flex items-center justify-between gap-3 mb-3">
+                    <span class="font-mono text-[10px] tracking-[0.2em] text-term-700 uppercase">{{ $industry['category'] ?? 'SECTOR' }}</span>
+                    <span class="font-mono text-[10px] tracking-[0.2em] text-accent-soft">SEC_{{ str_pad((string)$industry['sort_order'], 2, '0', STR_PAD_LEFT) }}</span>
+                </div>
+                @if($industry['image_url'])
+                <div class="mb-4 overflow-hidden rounded-lg border border-term-300 dark:border-white/10">
+                    <img src="{{ $industry['image_url'] }}" alt="{{ $industry['image_alt'] }}" loading="lazy" decoding="async" width="800" height="500"
+                         class="w-full h-28 object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                </div>
+                @else
+                <div class="mb-4 flex items-center justify-center h-28 rounded-lg border border-term-300 dark:border-white/10 bg-gradient-to-br from-royal-500/10 via-transparent to-accent/10">
+                    <svg class="w-9 h-9 text-accent-soft" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ $industry['icon'] }}"/>
+                    </svg>
+                </div>
+                @endif
+                <h3 class="font-display text-base sm:text-lg font-bold tracking-tight text-navy-900 dark:text-white group-hover:text-accent-soft transition-colors">
+                    <a href="{{ route('industries.show', $industry['slug']) }}" class="focus:outline-none">{{ $industry['name'] }}</a>
+                </h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-term-800 line-clamp-3">{{ $industry['description'] }}</p>
+                <a href="{{ route('industries.show', $industry['slug']) }}" class="term-link mt-auto pt-4 text-xs">Learn More
+                    <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </article>
+            @empty
+            <div class="term-panel p-8 text-sm text-term-800 sm:col-span-2 lg:col-span-3 xl:col-span-4">
+                Industry pages are being prepared.
+                <a href="{{ route('industries') }}" class="term-link ml-2">View industries →</a>
+            </div>
+            @endforelse
+        </div>
+
+        <div class="mt-8 flex justify-center">
+            <a href="{{ route('industries') }}" class="term-btn term-btn-ghost">View All Industries
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+{{-- ═══════════ 13 / KNOWLEDGE://BASE ═══════════ --}}
 <section class="relative w-full py-16 sm:py-20 lg:py-28 border-t border-term-300 dark:border-white/5" aria-labelledby="kb-heading">
     <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <x-section-head num="12" label="KNOWLEDGE://BASE"
+            <x-section-head num="13" label="KNOWLEDGE://BASE"
                 title="Documentation-grade guides, searchable."
                 desc="Live articles from the knowledge base — security guides, IT procedures, troubleshooting, and FAQs maintained by the team." />
             <a href="{{ route('kb.index') }}" class="term-link flex-shrink-0 reveal">Open knowledge base
@@ -520,11 +575,11 @@
     </div>
 </section>
 
-{{-- ═══════════ 13 / AI://ASSISTANT ═══════════ --}}
+{{-- ═══════════ 14 / AI://ASSISTANT ═══════════ --}}
 <section class="relative w-full py-16 sm:py-20 lg:py-28 border-t border-term-300 dark:border-white/5" aria-labelledby="ai-heading">
     <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 grid lg:grid-cols-12 gap-8 items-start">
         <div class="lg:col-span-7">
-            <x-section-head num="13" label="AI://ASSISTANT"
+            <x-section-head num="14" label="AI://ASSISTANT"
                 title="A support console, not a chatbot toy."
                 desc="The assistant answers from the company knowledge base, helps you discover services, guides support requests, and escalates to a human when needed." />
             <span id="ai-heading" class="sr-only">AI customer assistant</span>
@@ -547,11 +602,11 @@
     </div>
 </section>
 
-{{-- ═══════════ 14 / CONTACT://SECURE_CHANNEL ═══════════ --}}
+{{-- ═══════════ 15 / CONTACT://SECURE_CHANNEL ═══════════ --}}
 <section class="relative w-full py-16 sm:py-20 lg:py-28 border-t border-term-300 dark:border-white/5" aria-labelledby="contact-heading" data-3d-state="contact">
     <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 text-center">
         <div class="term-sec-head justify-center" aria-hidden="true">
-            <span class="term-sec-num">14</span>
+            <span class="term-sec-num">15</span>
             <span class="term-sec-label">CONTACT://SECURE_CHANNEL</span>
         </div>
         <h2 id="contact-heading" class="term-sec-title text-3xl sm:text-4xl lg:text-6xl text-balance reveal">LET'S SECURE YOUR<br>NEXT PROJECT.</h2>

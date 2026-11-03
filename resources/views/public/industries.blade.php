@@ -216,6 +216,62 @@
     </div>
 </section>
 
+{{-- Preferred industries (additive — original sectors above are preserved) --}}
+@if($newIndustries->isNotEmpty())
+<section class="relative w-full py-16 sm:py-20 lg:py-24 border-t border-term-300 dark:border-white/5" aria-labelledby="preferred-industries-heading" id="preferred-industries">
+    <div class="w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10">
+        <x-section-head num="02" label="INDUSTRIES://PREFERRED"
+            title="Preferred industries we support."
+            desc="Specialised IT, cybersecurity, and cloud support for high-trust service businesses, clinics, professional practices, and technology teams worldwide." />
+        <span id="preferred-industries-heading" class="sr-only">Preferred industries we support</span>
+
+        @foreach($newIndustries->groupBy('category') as $category => $industries)
+        <div class="mt-10 lg:mt-14">
+            <div class="flex items-center gap-3 mb-4">
+                <h3 class="font-mono text-[11px] tracking-[0.24em] uppercase text-accent-soft">{{ $category ?: 'Other sectors' }}</h3>
+                <span class="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" aria-hidden="true"></span>
+                <span class="term-tag">{{ $industries->count() }}</span>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+                @foreach($industries as $industry)
+                <article class="term-panel p-6 sm:p-7 group flex flex-col">
+                    <div class="flex items-center justify-between gap-3 mb-3">
+                        <span class="font-mono text-[10px] tracking-[0.2em] text-term-700 uppercase">{{ $industry['category'] ?? 'SECTOR' }}</span>
+                        <span class="font-mono text-[10px] tracking-[0.2em] text-accent-soft">SEC_{{ str_pad((string)($industry['sort_order']), 2, '0', STR_PAD_LEFT) }}</span>
+                    </div>
+                    @if($industry['image_url'])
+                    <div class="mb-4 overflow-hidden rounded-lg border border-term-300 dark:border-white/10">
+                        <img src="{{ $industry['image_url'] }}" alt="{{ $industry['image_alt'] }}" loading="lazy" decoding="async" width="800" height="500"
+                             class="w-full h-28 object-cover transition-transform duration-500 group-hover:scale-[1.03]">
+                    </div>
+                    @else
+                    <div class="mb-4 flex items-center justify-center h-28 rounded-lg border border-term-300 dark:border-white/10 bg-gradient-to-br from-royal-500/10 via-transparent to-accent/10">
+                        <svg class="w-9 h-9 text-accent-soft" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="{{ $industry['icon'] }}"/></svg>
+                    </div>
+                    @endif
+                    <h3 class="font-display text-lg font-bold tracking-tight text-navy-900 dark:text-white group-hover:text-accent-soft transition-colors">
+                        <a href="{{ route('industries.show', $industry['slug']) }}" class="focus:outline-none">{{ $industry['name'] }}</a>
+                    </h3>
+                    <p class="mt-2.5 text-sm leading-relaxed text-slate-600 dark:text-term-800">{{ $industry['description'] }}</p>
+                    @if(!empty($industry['tags']))
+                    <div class="flex flex-wrap gap-1.5 pt-4 mt-auto border-t border-term-300 dark:border-white/5">
+                        @foreach(array_slice($industry['tags'], 0, 3) as $tag)
+                        <span class="term-tag">{{ strtoupper($tag) }}</span>
+                        @endforeach
+                    </div>
+                    @endif
+                    <a href="{{ route('industries.show', $industry['slug']) }}" class="term-link mt-3 text-xs">Learn More
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    </a>
+                </article>
+                @endforeach
+            </div>
+        </div>
+        @endforeach
+    </div>
+</section>
+@endif
+
 {{-- CTA --}}
 <section class="relative w-full py-16 sm:py-20 border-t border-term-300 dark:border-white/5" aria-labelledby="industries-cta-heading">
     <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 text-center">

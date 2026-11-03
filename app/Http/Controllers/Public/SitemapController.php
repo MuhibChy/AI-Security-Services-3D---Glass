@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
 use App\Models\KbArticle;
 use App\Models\Service;
+use App\Support\IndustryCatalogue;
 
 class SitemapController extends Controller
 {
@@ -29,6 +30,7 @@ class SitemapController extends Controller
             ['loc' => '/case-studies', 'priority' => '0.7', 'changefreq' => 'monthly'],
             ['loc' => '/blog', 'priority' => '0.8', 'changefreq' => 'daily'],
             ['loc' => '/knowledge-base', 'priority' => '0.7', 'changefreq' => 'weekly'],
+            ['loc' => '/knowledge-hub', 'priority' => '0.8', 'changefreq' => 'weekly'],
             ['loc' => '/legal/privacy-policy', 'priority' => '0.3', 'changefreq' => 'yearly'],
             ['loc' => '/legal/terms-of-service', 'priority' => '0.3', 'changefreq' => 'yearly'],
             ['loc' => '/legal/cookie-policy', 'priority' => '0.3', 'changefreq' => 'yearly'],
@@ -52,6 +54,15 @@ class SitemapController extends Controller
             $xml .= '    <lastmod>'.$service->updated_at->format('Y-m-d').'</lastmod>'."\n";
             $xml .= '    <changefreq>weekly</changefreq>'."\n";
             $xml .= '    <priority>0.7</priority>'."\n";
+            $xml .= '  </url>'."\n";
+        }
+
+        // Preferred industry detail pages
+        foreach (IndustryCatalogue::slugs() as $industrySlug) {
+            $xml .= '  <url>'."\n";
+            $xml .= '    <loc>'.$url.'/industries/'.$industrySlug.'</loc>'."\n";
+            $xml .= '    <changefreq>monthly</changefreq>'."\n";
+            $xml .= '    <priority>0.6</priority>'."\n";
             $xml .= '  </url>'."\n";
         }
 
