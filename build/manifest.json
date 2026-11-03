@@ -1,6 +1,6 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-485ef060.css",
+    "file": "assets/app-133fe3e0.css",
     "isEntry": true,
     "src": "resources/css/app.css"
   },
@@ -8,12 +8,12 @@
     "dynamicImports": [
       "resources/js/global-3d.js"
     ],
-    "file": "assets/app-ff66dcb6.js",
+    "file": "assets/app-0d311841.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },
   "resources/js/global-3d.js": {
-    "file": "assets/global-3d-85a7578d.js",
+    "file": "assets/global-3d-b62f39e6.js",
     "isDynamicEntry": true,
     "src": "resources/js/global-3d.js"
   }

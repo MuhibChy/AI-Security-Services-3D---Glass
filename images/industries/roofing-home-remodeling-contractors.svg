@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="IT support for Roofing &amp; Home Remodeling Contractors">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071018"/>
+      <stop offset="0.55" stop-color="#0b1b20"/>
+      <stop offset="1" stop-color="#0c2a23"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="62%">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.055"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect width="800" height="500" fill="url(#grid)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <line x1="60" y1="76" x2="220" y2="76" stroke="#34d399" stroke-opacity="0.45" stroke-width="2"/>
+  <text x="60" y="62" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="13" letter-spacing="3" fill="#6ee7b7" fill-opacity="0.85">INDUSTRIES://SECTOR</text>
+  <circle cx="400" cy="228" r="112" fill="#ffffff" fill-opacity="0.035" stroke="#34d399" stroke-opacity="0.38" stroke-width="2"/>
+  <circle cx="400" cy="228" r="88" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+  <g transform="translate(340,168) scale(5)" fill="none" stroke="#a7f3d0" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h12a1 1 0 001-1V10"/>
+  </g>
+  <text x="400" y="392" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="14" letter-spacing="4" fill="#6ee7b7" fill-opacity="0.85">PROPERTY &amp; CONSTRUCTION</text>
+  <text x="400" y="428" text-anchor="middle" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif" font-size="22" font-weight="700" fill="#ffffff">Roofing &amp; Home Remodeling Contractors</text>
+  <line x1="60" y1="456" x2="740" y2="456" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1"/>
+</svg>
